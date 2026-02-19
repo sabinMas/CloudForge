@@ -1,5 +1,12 @@
 
-/** form for signing up  */
+/** form for users to sign up:
+ * Validates first name
+ * Validates last name
+ * Validates email
+ * Validates passwor
+ * Validates confirm password
+ */
+
 document.getElementById("app-form").onsubmit = () => {
 
     clearErrors();
@@ -20,6 +27,12 @@ document.getElementById("app-form").onsubmit = () => {
         isValid = false;
     }
     return isValid;
+
+    //create an email 
+
+    //create a password
+
+    //confirm password
 }
 
 function clearErrors() {
