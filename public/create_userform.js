@@ -3,7 +3,7 @@
  * Validates first name
  * Validates last name
  * Validates email
- * Validates passwor
+ * Validates password
  * Validates confirm password
  */
 
