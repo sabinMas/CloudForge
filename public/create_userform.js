@@ -5,6 +5,7 @@
  * Validates email
  * Validates password
  * Validates confirm password
+ * 
  */
 
 document.getElementById("app-form").onsubmit = () => {
