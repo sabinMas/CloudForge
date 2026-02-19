@@ -29,10 +29,25 @@ document.getElementById("app-form").onsubmit = () => {
     return isValid;
 
     //create an email 
+    let email = document.getElementById("email").value.trim();
+    if(!email) {
+        document.getElementById("err-email").style.display = "block";
+        isValid = false;
+    }
 
     //create a password
+    let password = document.getElementById("password").value.trim();
+    if(!password) {
+        document.getElementById("err-password").style.display = "block";
+        isValid = false;
+    }
 
     //confirm password
+    let confirmPassword = document.getElementById("confirm-password").value.trim();
+    if(password !== confirmPassword) {
+        document.getElementById("err-confirm-password").style.display = "block";
+        isValid = false;
+    }
 }
 
 function clearErrors() {
