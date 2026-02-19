@@ -27,7 +27,7 @@ document.getElementById("app-form").onsubmit = () => {
         isValid = false;
     }
     return isValid;
-
+}
     //create an email 
     let email = document.getElementById("email").value.trim();
     if(!email) {
@@ -48,7 +48,6 @@ document.getElementById("app-form").onsubmit = () => {
         document.getElementById("err-confirm-password").style.display = "block";
         isValid = false;
     }
-}
 
 function clearErrors() {
     let errors = document.getElementsByClassName("err");
