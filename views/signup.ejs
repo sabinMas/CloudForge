@@ -1,0 +1,47 @@
+<!-- 
+    Author: Jessica Hebert
+    Description: Sign-up form with client-side validation.
+    Validates first name, last name, email, password, and confirm password.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Sign Up Form Container -->
+    <div class="form-container">
+        <h2>Create Account</h2>
+        <form id="app-form">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" required>
+            <span id="err-fname" class="err">First name is required.</span>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" required>
+            <span id="err-lname" class="err">Last name is required.</span>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <span id="err-email" class="err">Email is required</span>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <span id="err-password" class="err">Password is required</span>
+
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password">
+            <span id="err-confirm-password" class="err">Passwords must match.</span>
+
+            <button type="submit">Sign up</button>
+
+        </form>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
