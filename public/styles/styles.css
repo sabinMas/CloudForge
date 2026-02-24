@@ -1,0 +1,73 @@
+/* Basic styles for signup form */
+
+:root {
+    --bg-color: #f8f8f8;          /* page background */
+    --form-bg: #ffffff;           /* form background */
+    --input-border: #ccc;         /* input border color */
+    --button-bg: #007bff;         /* button color */
+    --button-hover: #0056b3;      /* button hover color */
+    --text-color: #000000;        /* default text color */
+    --error-color: #ff0000;       /* error message color */
+    --font-family: Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    color: var(--text-color);
+}
+
+.form-container {
+    background-color: var(--form-bg);
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+    width: 300px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: var(--button-bg);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--button-hover);
+}
+
+.err {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    display: none;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
