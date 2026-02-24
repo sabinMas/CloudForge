@@ -9,13 +9,6 @@
  * Validates confirm password
  */
 
-/** create_userform.js
- * Author: Jessica Hebert
- * Description: Form validation for the sign-up page.
- * Validates first name, last name, email, password, and confirm password.
- * Errors appear on submit and clear in real-time as the user corrects each field.
- */
-
 document.getElementById("app-form").onsubmit = (e) => {
     clearErrors();
     let isValid = true;
