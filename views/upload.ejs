@@ -1,54 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/upload.css">
-    <title>Upload</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/upload.css">
+  <title>Upload</title>
 </head>
+
 <body>
-    <div id="topBar"><h1>Upload</h1></div>
-    <main>
-        <div id="imgBlock"></div>
-        <form>
-            <fieldset>
-                <label> 
-                    <p>Card Name:</p>
-                    <input id="cardName" type="text">
-                </label>
-                <label> 
-                    <p>Category:</p>
-                    <select id="category">
-                    </select>
-                </label>
-    
-                <label>
-                <p>Rating:</p>
-    
-                    <input id="rating" type="text">
-                </label>
-                <label>
-                    <p>Stats:</p>
-                    <input id="stats" type="text">
-    
-                </label>
-                <label>
-                    <span class="err" id="eprice">Please insert a price!</span>
-                    <div>
+  <div id="topBar">
+    <h1>Upload</h1>
+  </div>
+  <main>
+    <div id="imgBlock"></div>
+    <form>
+      <fieldset>
+        <label>
+          <p>Card Name:</p>
+          <div class="inputContanier">
 
-                        <p>
-                        Price:
-                        </p>
-                        <input id="'price" type="text" value="Error Test">
-                    </div>
-                </label>
-                <label>
-                    <p>History:</p>
-                    <textarea></textarea>
-                </label>
-            </fieldset>
-        </form>
+            <input id="name" type="text">
+            <span class="err" id="ename">Please insert a Name!</span>
+          </div>
+        </label>
+        <label>
+          <p>Category:</p>
+          <div class="inputContanier">
+            <select id="category">
+            </select>
+            <span class="err" id="erate">Please insert a Rating!</span>
+          </div>
+        </label>
 
-    </main>
+        <label>
+          <p>Rating:</p>
+
+          <div class="inputContanier">
+
+            <input id="rate" type="text">
+            <span class="err" id="erate">Please insert a Rating!</span>
+          </div>
+        </label>
+        <label>
+          <p>Stats:</p>
+          <div class="inputContanier">
+
+            <input id="stats" type="text">
+            <span class="err" id="stats">Please insert a Stat!</span>
+          </div>
+
+        </label>
+        <label>
+
+
+          <p>
+            Price:
+          </p>
+          <div class="inputContanier">
+
+            <input id="price" type="text" value="Error Test">
+            <span class="err" id="eprice">Please insert a price!</span>
+          </div>
+
+        </label>
+        <label>
+          <p>History:</p>
+          <textarea></textarea>
+        </label>
+      </fieldset>
+    </form>
+
+  </main>
 </body>
+
 </html>
