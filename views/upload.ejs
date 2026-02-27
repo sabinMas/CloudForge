@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/upload.css">
+  <script src="/js/upload-verify.js" defer></script>
   <title>Upload</title>
 </head>
 
@@ -14,7 +15,7 @@
   </div>
   <main>
     <div id="imgBlock"></div>
-    <form>
+    <form id="upload-form" action="#" method="get">
       <fieldset>
         <label>
           <p>Card Name:</p>
@@ -29,7 +30,7 @@
           <div class="inputContanier">
             <select id="category">
             </select>
-            <span class="err" id="erate">Please insert a Rating!</span>
+            <span class="err" id="ecate">Please insert a Category!</span>
           </div>
         </label>
 
@@ -46,8 +47,8 @@
           <p>Stats:</p>
           <div class="inputContanier">
 
-            <input id="stats" type="text">
-            <span class="err" id="stats">Please insert a Stat!</span>
+            <input id="stat" type="text">
+            <span class="err" id="estat">Please insert a Stat!</span>
           </div>
 
         </label>
@@ -59,7 +60,7 @@
           </p>
           <div class="inputContanier">
 
-            <input id="price" type="text" value="Error Test">
+            <input id="price" type="text">
             <span class="err" id="eprice">Please insert a price!</span>
           </div>
 
@@ -68,6 +69,7 @@
           <p>History:</p>
           <textarea></textarea>
         </label>
+        <button>Submit</button>
       </fieldset>
     </form>
 

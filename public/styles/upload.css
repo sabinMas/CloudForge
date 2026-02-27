@@ -28,6 +28,7 @@ label{
 }
 .inputContanier span{
     margin-right: auto;
+    display: none;
 }
 input{
     width: 50%;
