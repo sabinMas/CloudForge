@@ -1,65 +1,153 @@
-main{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin-right:50px ;
-    margin-left: 50px;
+/* Override root body centering for upload page */
+body {
+  display: block;        /* removes flex centering from signup styles */
+  height: auto;          /* removes 100vh constraint */
 }
-form{
-    width: 66%;
-    background-color: lightgray;
-}
-fieldset{
-    font-size: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    
-}
-label{
-    margin-bottom: 50px;
-    display: flex;
-    flex-direction: row;
 
+/* Top bar */
+#topBar {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-.inputContanier{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
+
+/* Main layout: image + form */
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
-.inputContanier span{
-    margin-right: auto;
-    display: none;
+
+#imgBlock {
+  flex: 1;
+  background-color: hsla(224, 100%, 35%, 0.603);
+  min-height: 300px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
-input{
-    width: 50%;
-    height: 40px;
+
+#imgUpload {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
 }
-select{
-    width: 50%;
-    height: 40px;
+
+#imgLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 1;
+  text-align: center;
 }
-p{
-    margin-top: auto;
-    width: 200px;
-    text-align: center;
-    height: 50px;
+
+#imgIcon {
+  font-size: 2rem;
 }
-textbox{
-    height: 80px;
-    width: 200px;
+
+#imgLabel span:nth-child(2) {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
 }
-#imgBlock{
-    width: 33%;
-    background-color: black;
-    height: 300px;
+
+#imgSubtext {
+  font-size: 0.8rem;
+  color: #ffffff;
 }
-#topBar{
-    text-align: center;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+
+#imgPreview {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
 }
-.err{
-    color: red;
-    text-align: center;
-    margin-top: 10px;
+/* Form area */
+#upload-form-wrapper {
+  flex: 2;
+  min-width: 400px;
+}
+
+#upload-form-wrapper .form-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Form inner layout */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.inputTitle {
+  display: block;
+  width: 80px;
+  font-weight: bold;
+  text-align: right;
+  padding-top: 8px;
+  margin: 0;
+}
+
+.inputContanier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContanier input,
+.inputContanier select,
+.inputContanier textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0; /* remove root margin since fieldset gap handles spacing */
+}
+
+.inputContanier .err {
+  text-align: left;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#upload-form button {
+  margin-top: 10px;
 }

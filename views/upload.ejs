@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/upload.css">
   <script src="/js/upload-verify.js" defer></script>
   <title>Upload</title>
@@ -14,11 +15,21 @@
     <h1>Upload</h1>
   </div>
   <main>
-    <div id="imgBlock"></div>
+    <div id="imgBlock">
+      <input type="file" id="imgUpload" accept="image/*">
+      <label for="imgUpload" id="imgLabel">
+        <span id="imgIcon">🖼️</span>
+        <span>Upload a Card</span>
+        <span id="imgSubtext">Click anywhere to browse</span>
+      </label>
+      <img id="imgPreview" src="" alt="Card preview">
+    </div>
+     <div id="upload-form-wrapper">      
+      <div class="form-container"> 
     <form id="upload-form" action="#" method="get">
       <fieldset>
         <label>
-          <p>Card Name:</p>
+          <span class="inputTitle">Title:</span>
           <div class="inputContanier">
 
             <input id="name" type="text">
@@ -26,7 +37,7 @@
           </div>
         </label>
         <label>
-          <p>Category:</p>
+          <span class="inputTitle">Category:</span>
           <div class="inputContanier">
             <select id="category">
             </select>
@@ -35,7 +46,7 @@
         </label>
 
         <label>
-          <p>Rating:</p>
+          <span class="inputTitle">Rating:</span>
 
           <div class="inputContanier">
 
@@ -44,7 +55,7 @@
           </div>
         </label>
         <label>
-          <p>Stats:</p>
+          <span class="inputTitle">Stats:</span>
           <div class="inputContanier">
 
             <input id="stat" type="text">
@@ -55,9 +66,9 @@
         <label>
 
 
-          <p>
+          <span class="inputTitle">
             Price:
-          </p>
+          </span>
           <div class="inputContanier">
 
             <input id="price" type="text">
@@ -66,14 +77,15 @@
 
         </label>
         <label>
-          <p>History:</p>
+          <span class="inputTitle">History:</span>
           <textarea></textarea>
         </label>
         <button>Submit</button>
       </fieldset>
     </form>
-
-  </main>
+    </div>
+    </div>
+</main>
 </body>
 
 </html>
