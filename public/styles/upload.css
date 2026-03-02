@@ -1,0 +1,153 @@
+/* Override root body centering for upload page */
+body {
+  display: block;        /* removes flex centering from signup styles */
+  height: auto;          /* removes 100vh constraint */
+}
+
+/* Top bar */
+#topBar {
+  width: 100%;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Main layout: image + form */
+main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+#imgBlock {
+  flex: 1;
+  background-color: hsla(224, 100%, 35%, 0.603);
+  min-height: 300px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#imgUpload {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  margin: 0;
+}
+
+#imgLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #ffffff;
+  pointer-events: none;
+  z-index: 1;
+  text-align: center;
+}
+
+#imgIcon {
+  font-size: 2rem;
+}
+
+#imgLabel span:nth-child(2) {
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+#imgSubtext {
+  font-size: 0.8rem;
+  color: #ffffff;
+}
+
+#imgPreview {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+/* Form area */
+#upload-form-wrapper {
+  flex: 2;
+  min-width: 400px;
+}
+
+#upload-form-wrapper .form-container {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Form inner layout */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+label {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.inputTitle {
+  display: block;
+  width: 80px;
+  font-weight: bold;
+  text-align: right;
+  padding-top: 8px;
+  margin: 0;
+}
+
+.inputContanier {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContanier input,
+.inputContanier select,
+.inputContanier textarea {
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 0; /* remove root margin since fieldset gap handles spacing */
+}
+
+.inputContanier .err {
+  text-align: left;
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+#upload-form button {
+  margin-top: 10px;
+}

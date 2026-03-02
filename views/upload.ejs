@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/upload.css">
+  <script src="/js/upload-verify.js" defer></script>
+  <title>Upload</title>
+</head>
+
+<body>
+  <div id="topBar">
+    <h1>Upload</h1>
+  </div>
+  <main>
+    <div id="imgBlock">
+      <input type="file" id="imgUpload" accept="image/*">
+      <label for="imgUpload" id="imgLabel">
+        <span id="imgIcon">🖼️</span>
+        <span>Upload a Card</span>
+        <span id="imgSubtext">Click anywhere to browse</span>
+      </label>
+      <img id="imgPreview" src="" alt="Card preview">
+    </div>
+     <div id="upload-form-wrapper">      
+      <div class="form-container"> 
+    <form id="upload-form" action="#" method="get">
+      <fieldset>
+        <label>
+          <span class="inputTitle">Title:</span>
+          <div class="inputContanier">
+
+            <input id="name" type="text">
+            <span class="err" id="ename">Please insert a Name!</span>
+          </div>
+        </label>
+        <label>
+          <span class="inputTitle">Category:</span>
+          <div class="inputContanier">
+            <select id="category">
+            </select>
+            <span class="err" id="ecate">Please insert a Category!</span>
+          </div>
+        </label>
+
+        <label>
+          <span class="inputTitle">Rating:</span>
+
+          <div class="inputContanier">
+
+            <input id="rate" type="text">
+            <span class="err" id="erate">Please insert a Rating!</span>
+          </div>
+        </label>
+        <label>
+          <span class="inputTitle">Stats:</span>
+          <div class="inputContanier">
+
+            <input id="stat" type="text">
+            <span class="err" id="estat">Please insert a Stat!</span>
+          </div>
+
+        </label>
+        <label>
+
+
+          <span class="inputTitle">
+            Price:
+          </span>
+          <div class="inputContanier">
+
+            <input id="price" type="text">
+            <span class="err" id="eprice">Please insert a price!</span>
+          </div>
+
+        </label>
+        <label>
+          <span class="inputTitle">History:</span>
+          <textarea></textarea>
+        </label>
+        <button>Submit</button>
+      </fieldset>
+    </form>
+    </div>
+    </div>
+</main>
+</body>
+
+</html>
