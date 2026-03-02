@@ -9,6 +9,7 @@
  * Validates confirm password
  */
 
+
 document.getElementById("app-form").onsubmit = (e) => {
     clearErrors();
     let isValid = true;
