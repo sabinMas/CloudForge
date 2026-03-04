@@ -3,7 +3,7 @@ import express from "express";
 const app = express();
 const PORT = 3003;
 const user={
-    name:"test"
+    name:""
 }
 //Set the view engine
 app.set("view engine", 'ejs');

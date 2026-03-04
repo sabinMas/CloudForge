@@ -1,0 +1,13 @@
+.navbar{
+   font-size: 1.5rem;
+   display: flex;
+   justify-content: space-evenly;
+   height: 100px;
+}
+
+.navbar a{
+    margin-top: auto;
+    margin-bottom: auto;
+    text-decoration: none;
+    color: black;
+}
