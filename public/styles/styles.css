@@ -1,72 +1,109 @@
-/* Basic styles for signup form */
-
-:root {
-    --bg-color: #f8f8f8;          /* page background */
-    --form-bg: #ffffff;           /* form background */
-    --input-border: #ccc;         /* input border color */
-    --button-bg: #007bff;         /* button color */
-    --button-hover: #0056b3;      /* button hover color */
-    --text-color: #000000;        /* default text color */
-    --error-color: #ff0000;       /* error message color */
-    --font-family: Arial, sans-serif;
-}
-
+/* Global Styles */
 body {
-    font-family: var(--font-family);
-    background-color: var(--bg-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9; 
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  color: var(--header-color); 
+}
+
+p, label, span {
+  color: #333; 
+}
+
+a {
+  color: var(--link-color); 
+  text-decoration: none;
+}
+
+/* Color Variables */
+:root {
+  --header-color: #6c5ce7; /* Deep purple for headers */
+  --bg-color: #ffffff; /* White background */
+  --input-border: #747474; /* Light gray border for inputs */
+  --error-color: #ff4136; /* Red error color */
+  --link-color: #0d6efd; /* Blue link color */
+  --button-bg: #6c5ce7; /* Deep purple background for buttons */
+  --button-hover: #5a48e9; /* Lighter purple hover effect for buttons */
+  --text-color: #111827;
+  --form-bg: #ffffff;
+  --hover-bg: #f3f4ff;
+}
+
+/* Form Container */
 .form-container {
-    background-color: var(--form-bg);
-    padding: 20px 30px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
-    width: 300px;
+  max-width: 400px;
+  width: 100%;
+  margin: 40px auto 60px; /* Center horizontally, add breathing room */
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center; /* Center align form content for better look */
 }
 
-/* Headings */
-h1, h2 {
-  text-align: center;
-  margin-bottom: 20px;
+/* Form Content */
+#app-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-/* Base controls */
+/* Labels and Inputs */
+label {
+  font-weight: bold;
+  margin-bottom: 4px; /* Small gap before input or error message */
+}
+
 input,
-select,
-textarea {
+select {
   width: 100%;
   padding: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 8px; /* Shared form styles add margin; use gap for spacing here */
   border: 1px solid var(--input-border);
   border-radius: 4px;
-  font: inherit;
+  background-color: #f5f5f5;
 }
 
+textarea {
+  min-height: 80px;
+  resize: vertical;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: #f5f5f5;
+}
+
+/* Error Messages */
+.err {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin: 0 0 4px; /* Small gap for spacing */
+  text-align: left;
+}
+
+/* Buttons Inside Forms */
 button {
   width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 4px;
+  padding: 8px 16px;
   background-color: var(--button-bg);
-  color: white;
+  border: none;
+  color: #ffffff;
   font-weight: bold;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 button:hover {
   background-color: var(--button-hover);
 }
 
-/* Error text */
-.err {
-  color: var(--error-color);
-  font-size: 0.85rem;
-  display: none;
-  margin-top: 4px;
+/* Sign-up Page Layout */
+body > .form-container {
+  margin-top: 40px; /* Space under navbar */
 }
