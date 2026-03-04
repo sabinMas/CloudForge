@@ -2,7 +2,9 @@ import express from "express";
 
 const app = express();
 const PORT = 3003;
-
+const user={
+    name:"test"
+}
 //Set the view engine
 app.set("view engine", 'ejs');
 
@@ -17,7 +19,7 @@ app.get('/signup',(req,res) => {
     res.render('signup')
 });
 app.get('/upload', (req, res) => {
-    res.render('upload')
+    res.render('upload', {user})
 });
 
 app.listen(PORT, () => {
