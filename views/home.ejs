@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+<!-- Author Mason Sabin
+ have not finished the home page yet specifically the carousel or the styling sheet.
+-->
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,4 +15,90 @@
      <a href="/upload">Upload</a>
     
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/home.css">
+  <title>Home</title>
+</head>
+
+<body>
+
+  
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <h2 id="hero-title">Welcome to our Community</h2>
+    <p id="hero-sub">Browse &amp; digitize your cards online</p>
+  </section>
+
+  <!-- Carousel Section -->
+  <section id="carousel-section">
+    <button class="carousel-arrow" id="prevBtn" aria-label="Previous">&#8249;</button>
+
+    <div id="carousel-track-wrapper">
+      <div id="carousel-track">
+        <div class="carousel-card" data-index="0">
+          <div class="card-img-wrapper">
+            <img src="https://placehold.co/200x200?text=Card" alt="Card">
+          </div>
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="carousel-card" data-index="1">
+          <div class="card-img-wrapper">
+            <img src="https://placehold.co/200x200?text=Card" alt="Card">
+          </div>
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="carousel-card" data-index="2">
+          <div class="card-img-wrapper">
+            <img src="https://placehold.co/200x200?text=Card" alt="Card">
+          </div>
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="carousel-card" data-index="3">
+          <div class="card-img-wrapper">
+            <img src="https://placehold.co/200x200?text=Card" alt="Card">
+          </div>
+          <span class="card-title">Card Title</span>
+        </div>
+        <div class="carousel-card" data-index="4">
+          <div class="card-img-wrapper">
+            <img src="https://placehold.co/200x200?text=Card" alt="Card">
+          </div>
+          <span class="card-title">Card Title</span>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-arrow" id="nextBtn" aria-label="Next">&#8250;</button>
+  </section>
+
+  <hr class="section-divider">
+
+  <!-- Category Section -->
+  <section id="category-section">
+    <h2 id="category-title">Jump to a Category</h2>
+    <div id="category-grid">
+      <a href="/cards?category=pokemon"           class="category-card">Pokemon</a>
+      <a href="/cards?category=basketball"        class="category-card">Basketball</a>
+      <a href="/cards?category=football"          class="category-card">Football</a>
+      <a href="/cards?category=baseball"          class="category-card">Baseball</a>
+      <a href="/cards?category=magic-the-gathering" class="category-card">Magic The Gathering</a>
+      <a href="/cards?category=soccer"            class="category-card">Soccer</a>
+      <a href="/cards?category=yu-gi-oh"          class="category-card">Yu-Gi-Oh</a>
+      <a href="/cards?category=hockey"            class="category-card">Hockey</a>
+      <a href="/cards?category=other"             class="category-card">Other</a>
+    </div>
+  </section>
+
+  <script src="/js/carousel.js"></script>
+</body>
+
 </html>
