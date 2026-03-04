@@ -12,11 +12,11 @@ app.use(express.static('public'))
 
 app.get('/', (req, res) => {
 
-    res.render(`home`,);
+    res.render(`home`, { user });
 })
 
 app.get('/signup',(req,res) => {
-    res.render('signup')
+    res.render('signup', { user })
 });
 app.get('/upload', (req, res) => {
     res.render('upload', {user})
