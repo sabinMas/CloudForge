@@ -1,4 +1,46 @@
 <!-- @author: Kelley Castillo
  Creating an confirmation page that will display the user's information after they have signed up from
- create_userform.js
- -->
+ create_userform.js -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/confirmation.css">
+  <title>Confirmation</title>
+</head>
+<body>
+  <%- include('partials/navbar', {user: user}) %>
+
+  <div class="confirmation-container">
+    <h2>Account Created!</h2>
+    <p>Thanks for signing up, <strong><%= formData.fname %></strong>. Here's your details:</p>
+
+    <div class="confirmation-details">
+      <table>
+        <tr>
+          <td>First Name:</td>
+          <td><%= formData.fname %></td>
+        </tr>
+        <tr>
+          <td>Last Name:</td>
+          <td><%= formData.lname %></td>
+        </tr>
+        <tr>
+          <td>Email:</td>
+          <td><%= formData.email %></td>
+        </tr>
+        <tr>
+          <td>Submitted At:</td>
+          <td><%= formData.timestamp %></td>
+        </tr>
+      </table>
+    </div>
+
+    <a href="/" class="btn-home">Back to Home</a>
+    <p class="timestamp">Entry #<%= submissionCount %> saved to records.</p> 
+  </div>
+</body>
+</html>
