@@ -1,0 +1,85 @@
+/* Sign-up page layout */
+body {
+  /* Use global body styles from styles.css; only adjust layout here */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Keep navbar at top, form below */
+body > .form-container {
+  margin-top: 40px;              
+}
+
+/* Center the form card and limit width (similar to upload form area) */
+.form-container {
+  max-width: 400px;
+  width: 100%;
+  margin: 40px auto 60px; 
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  padding: 24px 28px;;
+  border-radius: 8px;
+  text-align: center;            
+}
+
+/* Form content */
+#app-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Labels and inputs share the same base styles from styles.css
+   here we only tweak spacing to match upload page feel */
+#app-form label {
+  font-weight: bold;
+  font-family: var(--header-font-family);
+  margin-bottom: 4px;               
+}
+
+#app-form input,
+#app-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 8px;                 
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  box-sizing: border-box; /* <--- Add this line! */
+}
+
+#app-form textarea {
+  min-height: 80px;
+  resize: vertical;
+  padding: 8px;
+  margin-bottom: 8px;
+  border: 1px solid var(--input-border);
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  box-sizing: border-box; /* <--- And here! */
+}
+
+/* Error messages under each field */
+#app-form .err {
+  color: var(--error-color);
+  font-size: 0.8rem;
+  margin: 0 0 4px;                     
+  text-align: left;
+}
+
+/* Buttons inside forms */
+#app-form button {
+  width: 100%;
+  padding: 8px 16px;
+  background-color: var(--button-bg);
+  border: none;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#app-form button:hover {
+  background-color: var(--button-hover);
+}

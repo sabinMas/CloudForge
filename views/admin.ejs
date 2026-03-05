@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/styles/admin.css">
+    <title>Admin</title>
+</head>
+<body>
+    <%- include('partials/navbar',{user: user}) %>
+    <% for(sub of submissions){ %>
+        <div class="admindiv">
+            <h2>Title: <%=sub.name%></h2>
+            <p>Category: <%=sub.category%></p>
+            <p>Rating <%=sub.rate%></p>
+            <p><%=sub.stat  %></p>
+            <p>Price: <%=sub.price%></p>
+            <p>History: <%=sub.price%></p>
+
+        </div>
+    <%}%>
+</body>
+</html>

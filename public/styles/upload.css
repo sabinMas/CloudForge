@@ -1,9 +1,3 @@
-/* Override root body centering for upload page */
-body {
-  display: block;        /* removes flex centering from signup styles */
-  height: auto;          /* removes 100vh constraint */
-}
-
 /* Top bar */
 #topBar {
   width: 100%;
@@ -30,6 +24,7 @@ main {
   box-sizing: border-box;
 }
 
+/* Image block */
 #imgBlock {
   flex: 1;
   background-color: hsla(224, 100%, 35%, 0.603);
@@ -88,6 +83,7 @@ main {
   object-fit: contain;
   z-index: 1;
 }
+
 /* Form area */
 #upload-form-wrapper {
   flex: 2;
@@ -100,7 +96,7 @@ main {
 }
 
 /* Form inner layout */
-fieldset {
+#upload-form fieldset {
   border: none;
   padding: 0;
   margin: 0;
@@ -109,7 +105,7 @@ fieldset {
   gap: 20px;
 }
 
-label {
+#upload-form label {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -136,7 +132,7 @@ label {
 .inputContanier textarea {
   width: 100%;
   box-sizing: border-box;
-  margin-bottom: 0; /* remove root margin since fieldset gap handles spacing */
+  margin-bottom: 0;  /* shared form styles add margin; gap handles spacing here */
 }
 
 .inputContanier .err {
