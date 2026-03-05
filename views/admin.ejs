@@ -1,23 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="/styles/admin.css">
-    <title>Admin</title>
-</head>
-<body>
-    <%- include('partials/navbar',{user: user}) %>
-    <% for(sub of submissions){ %>
-        <div class="admindiv">
-            <h2>Title: <%=sub.name%></h2>
-            <p>Category: <%=sub.category%></p>
-            <p>Rating <%=sub.rate%></p>
-            <p><%=sub.stat  %></p>
-            <p>Price: <%=sub.price%></p>
-            <p>History: <%=sub.price%></p>
 
-        </div>
-    <%}%>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/admin.css">
+  <script src="//code.jquery.com/jquery-3.7.1.js"> </script>
+  <script src="//cdn.datatables.net/2.3.7/js/dataTables.js"></script>
+  <link rel="stylesheet" href="//cdn.datatables.net/2.3.7/css/dataTables.dataTables.css">
+  <title>Admin</title>
+</head>
+
+<body>
+  <%- include('partials/navbar',{user: user}) %>
+  <table id="order-table" class="display">
+    <thead>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Rating</th>
+      <th>Stats</th>
+      <th>Price</th>
+      <th>History</th>
+    </thead>
+    <tbody>
+      <% for(sub of submissions){ %>
+      <tr>
+        <td>Title: <%=sub.name%></td>
+        <td>Category: <%=sub.category%></td>
+        <td>Rating <%=sub.rate%></td>
+        <td><%=sub.stat  %></td>
+        <td>Price: <%=sub.price%></td>
+        <td>History: <%=sub.price%></td>
+
+      </tr>
+      <%}%>
+    </tbody>
+    </table>
 </body>
+  <script defer>
+    let table = new DataTable('#order-table')
+  </script>
 </html>
