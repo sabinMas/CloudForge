@@ -18,7 +18,7 @@ body > .form-container {
   margin: 40px auto 60px; 
   box-sizing: border-box;
   background-color: var(--bg-color);
-  padding: 20px;
+  padding: 24px 28px;;
   border-radius: 8px;
   text-align: center;            
 }
@@ -41,7 +41,7 @@ body > .form-container {
 #app-form input,
 #app-form select {
   width: 100%;
-  padding: 8px;
+  padding: 12px;
   margin-bottom: 8px;                 
   border: 1px solid var(--input-border);
   border-radius: 4px;
