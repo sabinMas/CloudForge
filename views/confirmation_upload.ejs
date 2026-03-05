@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/confirmation.css">
+    <title>Upload Confirmation</title>
+</head>
+
+<body>
+
+<%- include('partials/navbar',{user: user}) %>
+
+<div class="confirmation-container">
+
+<h2>Upload Successful!</h2>
+
+<p>Your card has been uploaded successfully.</p>
+
+<div class="confirmation-details">
+
+<table>
+
+<tr>
+<td>Title:</td>
+<td><%= formData.name %></td>
+</tr>
+
+<tr>
+<td>Category:</td>
+<td><%= formData.category %></td>
+</tr>
+
+<tr>
+<td>Rating:</td>
+<td><%= formData.rate %></td>
+</tr>
+
+<tr>
+<td>Stats:</td>
+<td><%= formData.stat %></td>
+</tr>
+
+<tr>
+<td>Price:</td>
+<td><%= formData.price %></td>
+</tr>
+
+<tr>
+<td>History:</td>
+<td><%= formData.history %></td>
+</tr>
+
+</table>
+
+</div>
+
+<a href="/upload">Upload Another Card</a>
+
+</div>
+
+</body>
+</html>

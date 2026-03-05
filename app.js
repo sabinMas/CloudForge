@@ -37,7 +37,29 @@ app.post('/signup', (req, res) => {
         submissionCount: submissions.length
     });
 });
+app.post('/upload', (req, res) => {
 
+    const { name, category, rate, stat, price, history } = req.body;
+
+    const record = {
+        name,
+        category,
+        rate,
+        stat,
+        price,
+        history,
+        timestamp: new Date().toLocaleString()
+    };
+
+    submissions.push(record);
+
+    res.render('confirmation_upload', {
+        user,
+        formData: record,
+        submissionCount: submissions.length
+    });
+
+});
 
 
 app.get('/upload', (req, res) => {
