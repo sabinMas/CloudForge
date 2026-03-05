@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isValid = true;
     let name = document.getElementById("name").value.trim();
     let rate = document.getElementById("rate").value.trim();
-    let price = document.getElementById("price").value.trim();
+    let price = document.getElementById("price").value;
     let stats = document.getElementById("stat").value.trim();
     let category = document.getElementById("category");
 
@@ -32,6 +32,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!price) {
       isValid = false;
       document.getElementById("eprice").style.display = "block";
+    }
+    if(price<0){
+      isValid = false;
+      document.getElementById("epricenegative").style.display = "block";
     }
     if (category.value === "none" || !category.value) {
       isValid = false;
