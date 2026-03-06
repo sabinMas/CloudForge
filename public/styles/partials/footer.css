@@ -1,0 +1,23 @@
+footer{
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(61, 58, 58);
+    justify-content: space-evenly;
+    margin-top: 0;
+    border-top: solid 5px black;
+}
+.footerSubDiv{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.linkContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.linkContainer a{
+    text-decoration: none;
+    color: white;
+    margin-top: 5px;
+}
