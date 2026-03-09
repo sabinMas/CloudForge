@@ -36,12 +36,11 @@ app.get('/admin', (req, res) => {
 app.post('/signup', async(req, res) => {
 
 
-    const user = req.body;
     const params=[
-        user.fname,
-        user.lname,
-        user.email,
-        user.password
+        req.body.fname,
+        req.body.lname,
+        req.body.email,
+        req.body.password
     ]
     console.log(params)
     const sql = `INSERT INTO users(fname,lname, email,password)
@@ -57,26 +56,29 @@ app.post('/signup', async(req, res) => {
         submissionCount: count[0].count
     });
 });
-app.post('/upload', (req, res) => {
+app.post('/upload', async(req, res) => {
 
     const { name, category, rate, stat, price, history } = req.body;
 
-    const record = {
+
+    const params = [
         name,
         category,
         rate,
         stat,
         price,
         history,
-        timestamp: new Date().toLocaleString()
-    };
+    ];
+    const sql = `INSERT INTO cards(name,category,rate,stat,price,history)
+                  values (?,?,?,?,?,?);`;
 
-    submissions.push(record);
-
+    const result = await pool.execute(sql, params);
+    const [count] = await pool.query(`Select COUNT(*) As count FROM cards`)
+    console.log(result)
     res.render('confirmation_upload', {
         user,
-        formData: record,
-        submissionCount: submissions.length
+        formData: result,
+        submissionCount: count[0].count
     });
 
 });
