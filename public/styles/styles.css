@@ -79,11 +79,11 @@ textarea {
   background-color: #f5f5f5;
 }
 
-/* Error Messages */
 .err {
+  display: none;          
   color: var(--error-color);
   font-size: 0.8rem;
-  margin: 0 0 4px; /* Small gap for spacing */
+  margin: 0 0 4px;
   text-align: left;
 }
 

@@ -24,74 +24,98 @@
         <span id="imgSubtext">Click anywhere to browse</span>
       </label>
       <img id="imgPreview" src="" alt="Card preview">
+
+      <span id="eimg" class="err" style="display:none; color:red;">
+        Please upload a valid image (PNG, JPG, WEBP, or SVG).
+      </span>
     </div>
-     <div id="upload-form-wrapper">      
-      <div class="form-container"> 
-    <form id="upload-form" action="/upload" method="post">
-      <fieldset>
-        <label>
-          <span class="inputTitle">Title:</span>
-          <div class="inputContanier">
 
-            <input id="name" name="name" type="text">
-            <span class="err" id="ename">Please insert a Name!</span>
-          </div>
-        </label>
-        <label>
-          <span class="inputTitle">Category:</span>
-          <div class="inputContanier">
-            <select id="category" name="category">
-              <option value="none">Pick a category</option>
-              <option value="gaming">Gaming</option>
-              <option value="trading">Trading</option>
-            </select>
-            <span class="err" id="ecate">Please insert a Category!</span>
-          </div>
-        </label>
+    <div id="upload-form-wrapper">
+      <div class="form-container">
+        <form id="upload-form" action="/upload" method="post">
+          <fieldset>
+            <label>
+              <span class="inputTitle">Title:</span>
+              <div class="inputContanier">
 
-        <label>
-          <span class="inputTitle">Rating:</span>
+                <input id="name" name="name" type="text">
+                <span class="err" id="ename">Please insert a Name!</span>
+              </div>
+            </label>
+            <label>
+              <span class="inputTitle">Category:</span>
+              <div class="inputContanier">
+                <select id="category" name="category">
+                  <option value="none">Pick a category</option>
+                  <option value="gaming">Gaming</option>
+                  <option value="trading">Trading</option>
+                </select>
+                <span class="err" id="ecate">Please insert a Category!</span>
+              </div>
+            </label>
 
-          <div class="inputContanier">
+            <label>
+              <span class="inputTitle">Rating:</span>
 
-            <input id="rate" name="rate" type="number">
-            <span class="err" id="erate">Please insert a Rating!</span>
-          </div>
-        </label>
-        <label>
-          <span class="inputTitle">Stats:</span>
-          <div class="inputContanier">
+              <div class="inputContanier">
+                <select id="rate" name="rate">
+                  <option value="" disabled selected>Select a rating</option>
+                  <option value="10">10 - Gem Mint</option>
+                  <option value="9">9 - Mint</option>
+                  <option value="8">8 - Near Mint/Mint</option>
+                  <option value="7">7 - Near Mint</option>
+                  <option value="6">6 - Excellent/Mint</option>
+                  <option value="5">5 - Excellent</option>
+                  <option value="4">4 - Very Good/Excellent</option>
+                  <option value="3">3 - Very Good</option>
+                  <option value="2">2 - Good</option>
+                  <option value="1">1 - Poor</option>
+                </select>
+                <span class="err" id="erate">Please insert a Rating!</span>
+              </div>
 
-            <input id="stat" name="stat" type="text">
-            <span class="err" id="estat">Please insert a Stat!</span>
-          </div>
+            </label>
+            <label>
+              <span class="inputTitle">Stats:</span>
+              <div class="inputContanier">
 
-        </label>
-        <label>
+                <input id="stat" name="stat" type="text">
+                <span class="err" id="estat">Please insert a Stat!</span>
+              </div>
+
+            </label>
+            <label>
 
 
-          <span class="inputTitle">
-            Price:
-          </span>
-          <div class="inputContanier">
+              <span class="inputTitle">
+                Price:
+              </span>
+              <div class="inputContanier">
 
-            <input id="price" name="price" type="number">
-            <span class="err" id="eprice">Please insert a price!</span>
-             <span class="err" id="epricenegative">Please insert a postive number!</span>
-          </div>
+                <input id="price" name="price" type="number">
+                <span class="err" id="eprice">Please insert a price!</span>
+                <span class="err" id="epricenegative">Please insert a postive number!</span>
+              </div>
 
-        </label>
-        <label>
-          <span class="inputTitle">History:</span>
-          <textarea name="history"></textarea>
-        </label>
-        <button>Submit</button>
-      </fieldset>
-    </form>
+            </label>
+            <label>
+              <span class="inputTitle">History:</span>
+              <textarea name="history"></textarea>
+            </label>
+            <button>Submit</button>
+          </fieldset>
+        </form>
+        <div class="nav-buttons">
+          <a href="/" class="nav-btn">Go Home</a>
+          <a href="/profile" class="nav-btn">Go to Dashboard</a>
+        </div>
+      </div>
+    </div>
+
     </div>
     </div>
-</main>
-      <%- include('partials/footer') %>
+  </main>
+  <%- include('partials/footer') %>
 </body>
 
 </html>

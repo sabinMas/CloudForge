@@ -45,20 +45,50 @@ document.addEventListener("DOMContentLoaded", () => {
     return isValid;
   };
 
-  if (imgUpload) {
-    imgUpload.addEventListener("change", function () {
-      const file = this.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          imgPreview.src = e.target.result;
-          imgPreview.style.display = "block";
-          imgLabel.style.display = "none";
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  }
+// Image upload preview and validation, with error handling for invalid files
+// 
+ if (imgUpload) {
+  imgUpload.addEventListener("change", function () {
+    const eimg = document.getElementById("eimg");
+    if (eimg) eimg.style.display = "none";
+
+    const file = this.files[0];
+    if (!file) {
+      imgPreview.src = "";
+      imgPreview.style.display = "none";
+      imgLabel.style.display = "block";
+      return;
+    }
+
+    const allowedTypes = [
+      "image/png",
+      "image/jpeg",
+      "image/jpg",
+      "image/webp",
+      "image/svg+xml"
+    ];
+
+    if (!allowedTypes.includes(file.type)) {
+      // invalid
+      this.value = "";
+      imgPreview.src = "";
+      imgPreview.style.display = "none";
+      imgLabel.style.display = "block";
+      if (eimg) eimg.style.display = "block";
+      return;
+    }
+
+    // valid
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      imgPreview.src = e.target.result;
+      imgPreview.style.display = "block";
+      imgLabel.style.display = "none";
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 });
 
 function clearErrors() {
