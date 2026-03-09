@@ -6,7 +6,6 @@ dotenv.config();
 const app = express();
 const PORT = 3003;
 const user = { name: "" };
-const submissions = [];
 const pool = mysql2.createPool({
     host: process.env.DB_HOST,
     user: process.env.DB_USER,
@@ -38,10 +37,6 @@ app.get('/admin', async(req, res) => {
         console.error('Database error:', err);
         res.status(500).send('Error loading orders' + err.message)
     }
-
-
-
-    // res.render('admin', { user, submissions });
 });
 
 app.post('/signup', async(req, res) => {
@@ -53,7 +48,6 @@ app.post('/signup', async(req, res) => {
         req.body.email,
         req.body.password
     ]
-    console.log(params)
     const sql = `INSERT INTO users(fname,lname, email,password)
                   values (?,?,?,?);`;
 
