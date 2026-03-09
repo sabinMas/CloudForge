@@ -29,8 +29,19 @@ app.get('/signup', (req, res) => {
     res.render('signup', { user });
 });
 
-app.get('/admin', (req, res) => {
-    res.render('admin', { user, submissions });
+app.get('/admin', async(req, res) => {
+
+    try {
+        const [submissions] = await pool.query('SELECT * FROM cards ORDER BY timestamp DESC');
+        res.render('admin', { user,submissions });
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading orders' + err.message)
+    }
+
+
+
+    // res.render('admin', { user, submissions });
 });
 
 app.post('/signup', async(req, res) => {
