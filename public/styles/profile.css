@@ -1,0 +1,152 @@
+/* ============================================
+   profile.css — User Dashboard styles
+   Extends styles.css (variables & base rules)
+   ============================================ */
+
+/* ---------- Profile Hero Bar ---------- */
+#profile-hero {
+  background-color: var(--button-bg);
+  padding: 28px 40px;
+}
+
+#profile-hero-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Avatar circle */
+#profile-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+#avatar-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+/* Name beside avatar */
+#profile-info {
+  flex: 1;
+}
+
+#profile-name {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #ffffff;
+}
+
+/* Buttons on the right side of the hero */
+#profile-actions {
+  display: flex;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.profile-btn {
+  display: inline-block;
+  padding: 8px 18px;
+  background-color: #ffffff;
+  color: var(--button-bg);
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-btn:hover {
+  background-color: var(--hover-bg);
+  color: var(--button-hover);
+}
+
+/* Outlined secondary style for Sell Card */
+.profile-btn-secondary {
+  background-color: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.profile-btn-secondary:hover {
+  background-color: #ffffff;
+  color: var(--button-bg);
+}
+
+/* ---------- My Cards Section ---------- */
+#my-cards-section {
+  max-width: 960px;
+  margin: 36px auto 60px;
+  padding: 0 20px;
+}
+
+#my-cards-title {
+  font-size: 1.3rem;
+  margin: 0 0 20px;
+  color: var(--text-color);
+  border-bottom: 2px solid var(--input-border);
+  padding-bottom: 8px;
+}
+
+/* 3-column grid */
+#profile-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* Individual card */
+.profile-card {
+  background-color: var(--form-bg);
+  border: 1px solid var(--input-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.profile-card:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+}
+
+.profile-card-img-wrapper {
+  width: 100%;
+  background-color: #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.profile-card-img-wrapper img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Card info bar below the image */
+.profile-card-info {
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.profile-card-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+  color: var(--text-color);
+}
+
+.profile-card-rating {
+  font-size: 0.82rem;
+  color: #555;
+}
