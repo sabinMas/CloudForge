@@ -13,20 +13,33 @@ img {
 
 /* ---------- Hero Section ---------- */
 #hero {
+  position: relative;
   text-align: center;
-  padding: 36px 20px 24px;
+  padding: 0 24px 48px;
+  background-color: #5c3070; /* matches logo banner background color */
+  overflow: hidden;
+}
+
+/* Logo banner — capped height so it doesn't dominate the page */
+#hero-logo {
+  display: block;
+  width: 100%;
+  max-height: 160px;
+  object-fit: cover;
+  object-position: center;
+  margin: 0 0 24px;
 }
 
 #hero-title {
   font-size: 1.6rem;
   margin: 0 0 6px;
-  color: var(--text-color);
+  color: #fdf6ee;
 }
 
 #hero-sub {
   margin: 0;
   font-size: 0.95rem;
-  color: #555;
+  color: #c4a8e0;
 }
 
 /* ---------- Carousel Section ---------- */
@@ -36,6 +49,7 @@ img {
   justify-content: center;
   gap: 16px;
   padding: 10px 20px 40px;
+  background-color: #1a0d2b;
 }
 
 #carousel-track-wrapper {
@@ -59,14 +73,30 @@ img {
   align-items: center;
   justify-content: center;
   font-size: 1.5rem;   /* Makes the arrow icon bigger */
+  background-color: #4a2a6e;
+  border: 1px solid #7b4fa6;
+  color: #fdf6ee;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.carousel-arrow:hover {
+  background-color: #c75b2a;
+  border-color: #c75b2a;
 }
 
 /* Each card takes a fixed width so we can slide by one card at a time */
 .carousel-card {
-  flex: 0 0 220px;   
-  background-color: var(--form-bg); /* Background color for cards */
+  flex: 0 0 220px;
+  background-color: #2c1650; /* Background color for cards */
+  border: 1px solid #4a2a6e;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0 6px;
   position: relative;
+  transition: transform 0.4s, box-shadow 0.4s, border-color 0.4s;
 }
+
 .card-img-wrapper {
   width: 100%;
   height: 230px;      /* enough for the largest card */
@@ -76,11 +106,17 @@ img {
   overflow: hidden;
 }
 
-
 .carousel-card .card-img-wrapper img {
   width: 170px;
   height: 170px;
   object-fit: cover; /* Ensures the image covers the entire space with no distortion */
+}
+
+/* Center card highlighted with orange border */
+.carousel-card.pos-center {
+  border-color: #c75b2a;
+  box-shadow: 0 0 0 2px #c75b2a, 0 12px 40px rgba(199, 91, 42, 0.3);
+  transform: scale(1.07);
 }
 
 .carousel-card.pos-center .card-img-wrapper img {
@@ -89,30 +125,37 @@ img {
   object-fit: cover;
 }
 
+/* Fade out far cards */
+.carousel-card.pos-far {
+  opacity: 0.45;
+  transform: scale(0.9);
+}
+
 .card-title {
   margin-top: 8px;
+  padding: 0 10px 10px;
   font-size: 0.9rem;
-  color: var(--text-color); /* Text color for card titles */
+  color: #fdf6ee; /* Text color for card titles */
 }
 
 /* ---------- Divider ---------- */
 .section-divider {
   border: none;
-  border-top: 1px solid var(--input-border);
+  border-top: 1px solid #4a2a6e;
   margin: 0 40px;
 }
 
 /* ---------- Category Section ---------- */
 #category-section {
   padding: 36px 40px 48px;
-  background-color: #f9f9f9; /* Background color for category section */
+  background-color: #24103d; /* Background color for category section */
 }
 
 #category-title {
   text-align: center;
   font-size: 1.5rem;
   margin: 0 0 28px;
-  color: var(--text-color); /* Text color for title */
+  color: #fdf6ee; /* Text color for title */
 }
 
 #category-grid {
@@ -127,21 +170,17 @@ img {
   display: block;
   text-align: center;
   padding: 16px 12px;
-  border: 1px solid var(--input-border); /* Border color for category cards */
+  border: 1px solid #4a2a6e; /* Border color for category cards */
   border-radius: 6px;
-  background-color: white; /* Background color for category cards */
-  color: var(--text-color); /* Text color for category cards */
+  background-color: #2c1650; /* Background color for category cards */
+  color: #fdf6ee; /* Text color for category cards */
   font-weight: bold;
   font-size: 0.95rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .category-card:hover {
-  background-color: var(--hover-bg);
+  background-color: #c75b2a;
+  border-color: #e07840;
+  color: #ffffff;
 }
-#carousel-track {
-  transform: none !important;
-}
-
-
-
