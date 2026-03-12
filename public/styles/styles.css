@@ -3,36 +3,32 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f9; 
+  background-color: #1a0d2b;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
-  color: var(--header-color); 
+  color: #c75b2a; /* Burnt orange for headers */
 }
 
 p, label, span {
-  color: #333; 
+  color: #fdf6ee;
 }
 
 a {
-  color: var(--link-color); 
+  color: #e07840; /* Orange links */
   text-decoration: none;
 }
 
-/* Color Variables */
-:root {
-  --header-color: #6c5ce7; /* Deep purple for headers */
-  --bg-color: #ffffff; /* White background */
-  --input-border: #747474; /* Light gray border for inputs */
-  --error-color: #ff4136; /* Red error color */
-  --link-color: #0d6efd; /* Blue link color */
-  --button-bg: #6c5ce7; /* Deep purple background for buttons */
-  --button-hover: #5a48e9; /* Lighter purple hover effect for buttons */
-  --text-color: #111827;
-  --form-bg: #ffffff;
-  --hover-bg: #f3f4ff;
-}
+/* Color Reference (no variables — plain values used throughout)
+   Deep purple background:  #1a0d2b
+   Mid purple (cards/forms): #2c1650
+   Light purple (borders):  #4a2a6e
+   Burnt orange (accent):   #c75b2a
+   Light orange (hover):    #e07840
+   Cream text:              #fdf6ee
+   Error red:               #ff4136
+*/
 
 /* Form Container */
 .form-container {
@@ -40,9 +36,10 @@ a {
   width: 100%;
   margin: 40px auto 60px; /* Center horizontally, add breathing room */
   box-sizing: border-box;
-  background-color: var(--bg-color);
+  background-color: #2c1650;
   padding: 20px;
   border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
   text-align: center; /* Center align form content for better look */
 }
 
@@ -56,6 +53,7 @@ a {
 /* Labels and Inputs */
 label {
   font-weight: bold;
+  color: #fdf6ee;
   margin-bottom: 4px; /* Small gap before input or error message */
 }
 
@@ -64,9 +62,11 @@ select {
   width: 100%;
   padding: 8px;
   margin-bottom: 8px; /* Shared form styles add margin; use gap for spacing here */
-  border: 1px solid var(--input-border);
+  border: 1px solid #4a2a6e;
   border-radius: 4px;
-  background-color: #f5f5f5;
+  background-color: #1a0d2b;
+  color: #fdf6ee;
+  box-sizing: border-box;
 }
 
 textarea {
@@ -74,14 +74,23 @@ textarea {
   resize: vertical;
   padding: 8px;
   margin-bottom: 8px;
-  border: 1px solid var(--input-border);
+  border: 1px solid #4a2a6e;
   border-radius: 4px;
-  background-color: #f5f5f5;
+  background-color: #1a0d2b;
+  color: #fdf6ee;
+  box-sizing: border-box;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #c75b2a;
+  border-color: #c75b2a;
 }
 
 .err {
-  display: none;          
-  color: var(--error-color);
+  display: none;
+  color: #ff4136; /* Red error color */
   font-size: 0.8rem;
   margin: 0 0 4px;
   text-align: left;
@@ -91,16 +100,17 @@ textarea {
 button {
   width: 100%;
   padding: 8px 16px;
-  background-color: var(--button-bg);
+  background-color: #4a2a6e; 
   border: none;
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 button:hover {
-  background-color: var(--button-hover);
+  background-color: #c75b2a; 
 }
 
 /* Sign-up Page Layout */
