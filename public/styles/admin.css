@@ -1,0 +1,77 @@
+/* Admin page styles. -maybe ???  */
+
+/* Admin layout */
+body {
+  background-color: #1a0d2b;
+  color: #fdf6ee;
+}
+
+/* Admin container */
+.admin-container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Admin page heading */
+.admin-container h1,
+.admin-container h2 {
+  color: #c75b2a; /*  orange for headers */
+}
+
+/* Admin table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #2c1650;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+th {
+  background-color: #4a2a6e; /*  purple for table headers */
+  color: #fdf6ee;
+  padding: 12px 16px;
+  text-align: left;
+  font-weight: bold;
+}
+
+td {
+  padding: 10px 16px;
+  border-bottom: 1px solid #4a2a6e;
+  color: #fdf6ee;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:hover td {
+  background-color: #3a1e60;
+}
+
+/* Admin buttons */
+.admin-btn {
+  display: inline-block;
+  padding: 6px 14px;
+  background-color: #4a2a6e; /*  purple */
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.admin-btn:hover {
+  background-color: #c75b2a; /*  orange on hover */
+}
+
+.admin-btn.danger {
+  background-color: #8b1a1a;
+}
+
+.admin-btn.danger:hover {
+  background-color: #ff4136;
+}
