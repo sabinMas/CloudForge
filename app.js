@@ -28,6 +28,10 @@ app.get('/signup', (req, res) => {
     res.render('signup', { user });
 });
 
+app.get('/profile', (req, res) => {
+    res.render('profile', { user });
+});
+
 app.get('/admin', async(req, res) => {
 
     try {
