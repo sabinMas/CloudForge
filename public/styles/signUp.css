@@ -4,23 +4,25 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: #1a0d2b;
 }
 
 /* Keep navbar at top, form below */
 body > .form-container {
-  margin-top: 40px;              
+  margin-top: 40px;
 }
 
 /* Center the form card and limit width (similar to upload form area) */
 .form-container {
   max-width: 400px;
   width: 100%;
-  margin: 40px auto 60px; 
+  margin: 40px auto 60px;
   box-sizing: border-box;
-  background-color: var(--bg-color);
-  padding: 24px 28px;;
+  background-color: #2c1650;
+  padding: 24px 28px;
   border-radius: 8px;
-  text-align: center;            
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  text-align: center;
 }
 
 /* Form content */
@@ -34,18 +36,19 @@ body > .form-container {
    here we only tweak spacing to match upload page feel */
 #app-form label {
   font-weight: bold;
-  font-family: var(--header-font-family);
-  margin-bottom: 4px;               
+  color: #fdf6ee;
+  margin-bottom: 4px;
 }
 
 #app-form input,
 #app-form select {
   width: 100%;
   padding: 12px;
-  margin-bottom: 8px;                 
-  border: 1px solid var(--input-border);
+  margin-bottom: 8px;
+  border: 1px solid #4a2a6e;
   border-radius: 4px;
-  background-color: #f5f5f5;
+  background-color: #1a0d2b;
+  color: #fdf6ee;
   box-sizing: border-box; /* <--- Add this line! */
 }
 
@@ -54,17 +57,18 @@ body > .form-container {
   resize: vertical;
   padding: 8px;
   margin-bottom: 8px;
-  border: 1px solid var(--input-border);
+  border: 1px solid #4a2a6e;
   border-radius: 4px;
-  background-color: #f5f5f5;
+  background-color: #1a0d2b;
+  color: #fdf6ee;
   box-sizing: border-box; /* <--- And here! */
 }
 
 /* Error messages under each field */
 #app-form .err {
-  color: var(--error-color);
+  color: #ff4136;
   font-size: 0.8rem;
-  margin: 0 0 4px;                     
+  margin: 0 0 4px;
   text-align: left;
 }
 
@@ -72,14 +76,15 @@ body > .form-container {
 #app-form button {
   width: 100%;
   padding: 8px 16px;
-  background-color: var(--button-bg);
+  background-color: #4a2a6e; /*  purple background for buttons */
   border: none;
   color: #ffffff;
   font-weight: bold;
   cursor: pointer;
   border-radius: 4px;
+  transition: background-color 0.2s;
 }
 
 #app-form button:hover {
-  background-color: var(--button-hover);
+  background-color: #c75b2a; /*  orange hover */
 }
