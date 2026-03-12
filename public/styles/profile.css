@@ -65,8 +65,8 @@
 }
 
 .profile-btn:hover {
-  background-color: var(--hover-bg);
-  color: var(--button-hover);
+  background-color: #c75b2a;;
+  color: #ffffff;
 }
 
 /* Outlined secondary style for Sell Card */
@@ -91,7 +91,7 @@
 #my-cards-title {
   font-size: 1.3rem;
   margin: 0 0 20px;
-  color: var(--text-color);
+  color: #fdf6ee;
   border-bottom: 2px solid var(--input-border);
   padding-bottom: 8px;
 }
