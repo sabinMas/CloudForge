@@ -34,19 +34,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isValid) e.preventDefault();
     };
 
-    // Clear errors when user types correctly
-    document.getElementById("fname").oninput = () => clearFieldError("fname", "err-fname");
-    document.getElementById("lname").oninput = () => clearFieldError("lname", "err-lname");
     document.getElementById("email").oninput = () => clearFieldError("email", "err-email");
     document.getElementById("password").oninput = () => clearFieldError("password", "err-password");
-    document.getElementById("confirm-password").oninput = () => {
-        let pw = document.getElementById("password").value;
-        let cpw = document.getElementById("confirm-password").value;
-        if (cpw === pw) {
-            document.getElementById("err-confirm-password").style.display = "none";
-            document.getElementById("confirm-password").classList.remove("input-error");
-        }
-    };
+
 
 });
 

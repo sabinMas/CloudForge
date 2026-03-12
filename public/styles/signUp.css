@@ -88,3 +88,10 @@ body > .form-container {
 #app-form button:hover {
   background-color: #c75b2a; /*  orange hover */
 }
+.signin_err{
+  color: #ff4136;
+    /* Red error color */
+    font-size: 0.8rem;
+    margin: 0 0 4px;
+    text-align: left;
+}

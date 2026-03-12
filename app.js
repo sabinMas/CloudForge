@@ -35,9 +35,27 @@ app.get('/profile', (req, res) => {
 });
 
 app.get('/signin', (req,res)=>{
-    res.render('signin', { user })
+    res.render('signin', { user, error:false })
 })
-
+app.post('/signinsubmit',async(req,res)=>{
+    try{
+        //Used this site as a refrence to write this query properly. https://blogs.oracle.com/mysql/parameterizing-mysql-queries-in-node"
+        const [users] = await pool.query(
+            "SELECT * FROM users WHERE email = ? LIMIT 1",
+            [req.body.email]
+        );
+        console.log(users[0].password)
+        if(users[0].password===req.body.password){
+            res.redirect('/')
+        }
+        else {
+            res.render('signin', {user, error: true})
+        }
+    }
+    catch(err){
+        res.status(500).send('Error loading orders' + err.message)
+    }
+})
 app.get('/admin', async(req, res) => {
 
     try {

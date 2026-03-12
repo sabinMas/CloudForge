@@ -19,20 +19,26 @@
   <%- include('partials/navbar',{user: user}) %>
   <!-- Sign Up Form Container -->
   <div class="form-container">
-    <h2>Create Account</h2>
-    <form id="app-form" action="/signin" method="post">
-
-      <label for="email">Email</label>
+    <h2>Sign In</h2>
+    <form id="app-form" action="/signinsubmit" method="post">
+        <label for="email">Email</label>
+        
+                <% if(error){ %>
+                  <span class='signin_err'> Email or Password Incorrect </sapn>
+                <%} %>
       <input type="text" id="email" name="email">
       <span id="err-email" class="err">Email is required</span>
 
       <label for="password">Password</label>
+      
+      <% if(error){ %>
+      <span class='signin_err'> Email or Password Incorrect </sapn>
+        <%} %>
       <input type="password" id="password" name="password">
       <span id="err-password" class="err">Password is required</span>
 
-
       <button type="submit">Sign In</button>
-      <a>Click Here to Create an account!</a>
+      <a href="/signup">Click Here to Create an account!</a>
 
     </form>
   </div>
