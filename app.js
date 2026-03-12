@@ -20,14 +20,17 @@ app.use(express.static('public'));
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 
+//Main route
 app.get('/', (req, res) => {
     res.render('home', { user });
 });
 
+//Sends the user to the sign up view
 app.get('/signup', (req, res) => {
     res.render('signup', { user });
 });
 
+//Sends user to admin view
 app.get('/admin', async(req, res) => {
 
     try {
@@ -38,6 +41,7 @@ app.get('/admin', async(req, res) => {
         res.status(500).send('Error loading orders' + err.message)
     }
 });
+
 
 app.post('/signup', async(req, res) => {
 
@@ -57,7 +61,7 @@ app.post('/signup', async(req, res) => {
 
     res.render('confirmation_userform', {
         user,
-        formData: result,
+        formData: req.body,
         submissionCount: count[0].count
     });
 });
@@ -82,7 +86,7 @@ app.post('/upload', async(req, res) => {
     console.log(result)
     res.render('confirmation_upload', {
         user,
-        formData: result,
+        formData: req.body,
         submissionCount: count[0].count
     });
 
