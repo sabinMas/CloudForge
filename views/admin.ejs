@@ -13,6 +13,9 @@
 
 <body>
   <%- include('partials/navbar',{user: user}) %>
+
+  <!-- Card Table -->
+  <h2>Cards</h2>
   <table id="order-table" class="display">
     <thead>
       <th>Title</th>
@@ -36,9 +39,41 @@
       <%}%>
     </tbody>
     </table>
-          <%- include('partials/footer') %>
+
+
+  <!-- Users Table -->
+  <section>
+    <h2>Users</h2>
+    <table id="users-table" class="display">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (let user of users) { %>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.fname %></td>
+            <td><%= user.lname %></td>
+            <td><%= user.email %></td>
+            <td>
+              <button>Edit</button>
+              <button>Delete</button>
+            </td>
+          </tr>
+          <% } %>
+      </tbody>
+    </table>
+  </section>
+  <%- include('partials/footer') %>
 </body>
   <script defer>
     let table = new DataTable('#order-table')
+    let table2 = new DataTable('#users-table');
   </script>
 </html>

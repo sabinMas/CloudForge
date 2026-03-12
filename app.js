@@ -60,7 +60,8 @@ app.get('/admin', async(req, res) => {
 
     try {
         const [submissions] = await pool.query('SELECT * FROM cards ORDER BY timestamp DESC');
-        res.render('admin', { user,submissions });
+        const [users] = await pool.query('SELECT id, fname, lname, email FROM users ORDER BY id');
+        res.render('admin', { user,submissions,users });
     } catch (err) {
         console.error('Database error:', err);
         res.status(500).send('Error loading orders' + err.message)
