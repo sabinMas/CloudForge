@@ -1,0 +1,114 @@
+<!--
+    Author: Mason
+    Description: User dashboard page — shows profile hero bar and uploaded cards grid.
+    Will pull from database once connected; uses placeholder data for now.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/profile.css">
+  <title>Dashboard</title>
+</head>
+<main>
+<body>
+  <%- include('partials/navbar', {user: user}) %>
+
+  <!-- Hero / Profile Bar -->
+  <section id="profile-hero">
+    <div id="profile-hero-inner">
+      <div id="profile-avatar">
+        <!-- Placeholder avatar icon, swap for real image when auth is set up -->
+        <span id="avatar-icon">👤</span>
+      </div>
+      <div id="profile-info">
+        <h2 id="profile-name">
+          <!-- TODO: replace with session user name once auth is in place -->
+          <%= user.name ? user.name : "Guest User" %>
+        </h2>
+      </div>
+      <div id="profile-actions">
+        <a href="/upload" class="profile-btn">+ Upload Card</a>
+        <!-- Sell button wired up later when sell route is ready -->
+        <a href="#" class="profile-btn profile-btn-secondary">Sell Card</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- My Cards Section -->
+  <section id="my-cards-section">
+    <h3 id="my-cards-title">My Cards</h3>
+
+    <div id="profile-card-grid">
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 9 - Mint</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 7 - Near Mint</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 10 - Gem Mint</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 8 - Near Mint/Mint</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 6 - Excellent/Mint</span>
+        </div>
+      </div>
+
+      <div class="profile-card">
+        <div class="profile-card-img-wrapper">
+          <img src="/graphics/460x640.svg" alt="Card placeholder">
+        </div>
+        <div class="profile-card-info">
+          <span class="profile-card-title">Card Title</span>
+          <span class="profile-card-rating">Rating: 5 - Excellent</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+
+</main>
+<%- include('partials/footer') %>
+</html>

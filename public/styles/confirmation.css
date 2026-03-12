@@ -2,79 +2,80 @@
     *  @description CSS for the confirmation page
      after user form submission
      */
- 
- .confirmation-container {
-      max-width: 500px;
-      margin: 60px auto;
-      padding: 2rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-      text-align: center;
-    }
 
-    .confirmation-icon {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-    }
+.confirmation-container {
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 2rem;
+  background: #2c1650;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  text-align: center;
+}
 
-    .confirmation-container h2 {
-      margin-bottom: 0.5rem;
-      color: dark purple;
-    }
+.confirmation-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
 
-    .confirmation-container p {
-      color: #555;
-      margin-bottom: 1.5rem;
-    }
+.confirmation-container h2 {
+  margin-bottom: 0.5rem;
+  color: #c75b2a; /* Burnt orange */
+}
 
-    .confirmation-details {
-      text-align: left;
-      background: #f4f4f4;
-      border-radius: 8px;
-      padding: 1rem 1.5rem;
-      margin-bottom: 1.5rem;
-    }
+.confirmation-container p {
+  color: #c4a8e0;
+  margin-bottom: 1.5rem;
+}
 
-    .confirmation-details table {
-      width: 100%;
-      border-collapse: collapse;
-    }
+.confirmation-details {
+  text-align: left;
+  background: #1a0d2b;
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #4a2a6e;
+}
 
-    .confirmation-details td {
-      padding: 0.4rem 0.5rem;
-      vertical-align: top;
-    }
+.confirmation-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-    .confirmation-details td:first-child {
-      font-weight: 600;
-      color: #333;
-      width: 45%;
-    }
+.confirmation-details td {
+  padding: 0.4rem 0.5rem;
+  vertical-align: top;
+}
 
-    .confirmation-details td:last-child {
-      color: #555;
-      word-break: break-word;
-    }
+.confirmation-details td:first-child {
+  font-weight: 600;
+  color: #e07840; /* Light orange for labels */
+  width: 45%;
+}
 
-    .timestamp {
-      font-size: 0.8rem;
-      color: #999;
-      margin-top: 1rem;
-    }
+.confirmation-details td:last-child {
+  color: #fdf6ee;
+  word-break: break-word;
+}
 
-    .btn-home {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.6rem 1.5rem;
-      background-color: #2d6a4f;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background 0.2s;
-    }
+.timestamp {
+  font-size: 0.8rem;
+  color: #7b4fa6;
+  margin-top: 1rem;
+}
 
-    .btn-home:hover {
-      background-color: dark purple;
-    }
+.btn-home {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.6rem 1.5rem;
+  background-color: #4a2a6e; /* Deep purple */
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.btn-home:hover {
+  background-color: #c75b2a; /* Burnt orange on hover */
+}

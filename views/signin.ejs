@@ -1,0 +1,43 @@
+<!-- 
+    Author: Jessica Hebert, Aaron Bailey
+    Description: Sign-in form with client-side validation.
+    Validates email, password.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In </title>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <link rel="stylesheet" href="/styles/signup.css">
+</head>
+
+<body>
+  <%- include('partials/navbar',{user: user}) %>
+  <!-- Sign Up Form Container -->
+  <div class="form-container">
+    <h2>Create Account</h2>
+    <form id="app-form" action="/signin" method="post">
+
+      <label for="email">Email</label>
+      <input type="text" id="email" name="email">
+      <span id="err-email" class="err">Email is required</span>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+      <span id="err-password" class="err">Password is required</span>
+
+
+      <button type="submit">Sign In</button>
+      <a>Click Here to Create an account!</a>
+
+    </form>
+  </div>
+  <%- include('partials/footer') %>
+  <script src="/js/signin.js"></script>
+</body>
+
+</html>

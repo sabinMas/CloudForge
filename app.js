@@ -30,7 +30,14 @@ app.get('/signup', (req, res) => {
     res.render('signup', { user });
 });
 
-//Sends user to admin view
+app.get('/profile', (req, res) => {
+    res.render('profile', { user });
+});
+
+app.get('/signin', (req,res)=>{
+    res.render('signin', { user })
+})
+
 app.get('/admin', async(req, res) => {
 
     try {
