@@ -34,7 +34,7 @@
   </div>
 
   <!-- Card Grid -->
-  <div id="card-grid">
+  <div id="card-grid" data-active-category="<%= activeCategory %>">
     <% for (let sub of submissions) { %>
     <div class="flip-card" data-category="<%= sub.category %>">
       <div class="flip-card-inner">
