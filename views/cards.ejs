@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/admin.css">
+  <link rel="stylesheet" href="/styles/cards.css">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="/js/cards.js" defer></script>
+  <title>Browse Cards</title>
+ 
+</head>
+
+<body>
+  <%- include('partials/navbar', {user: user}) %>
+
+  <div id="page-header">
+    <h1>All Cards</h1>
+    <p><%= submissions.length %> card<%= submissions.length !== 1 ? 's' : '' %> in the collection</p>
+  </div>
+
+  <!-- Category Filter Buttons -->
+  <div id="filter-bar">
+    <button class="filter-btn <%= activeCategory === 'all' ? 'active' : '' %>" data-filter="all">All</button>
+    <button class="filter-btn <%= activeCategory === 'pokemon' ? 'active' : '' %>" data-filter="pokemon">Pokemon</button>
+    <button class="filter-btn <%= activeCategory === 'magic-the-gathering' ? 'active' : '' %>" data-filter="magic-the-gathering">Magic</button>
+    <button class="filter-btn <%= activeCategory === 'yu-gi-oh' ? 'active' : '' %>" data-filter="yu-gi-oh">Yu-Gi-Oh</button>
+    <button class="filter-btn <%= activeCategory === 'basketball' ? 'active' : '' %>" data-filter="basketball">Basketball</button>
+    <button class="filter-btn <%= activeCategory === 'football' ? 'active' : '' %>" data-filter="football">Football</button>
+    <button class="filter-btn <%= activeCategory === 'baseball' ? 'active' : '' %>" data-filter="baseball">Baseball</button>
+    <button class="filter-btn <%= activeCategory === 'soccer' ? 'active' : '' %>" data-filter="soccer">Soccer</button>
+    <button class="filter-btn <%= activeCategory === 'hockey' ? 'active' : '' %>" data-filter="hockey">Hockey</button>
+  </div>
+
+  <!-- Card Grid -->
+  <div id="card-grid">
+    <% for (let sub of submissions) { %>
+    <div class="flip-card" data-category="<%= sub.category %>">
+      <div class="flip-card-inner">
+
+        <!-- FRONT -->
+        <div class="flip-card-front">
+          <% if (sub.image) { %>
+            <img src="/uploads/<%= sub.image %>" alt="<%= sub.name %>">
+          <% } else { %>
+            <img src="/graphics/460x640.svg" alt="Card placeholder">
+          <% } %>
+          <div class="card-front-footer">
+            <p class="card-name"><%= sub.name %></p>
+            <p class="card-category"><%= sub.category %></p>
+            <p class="flip-hint">click to flip ↻</p>
+          </div>
+        </div>
+
+        <!-- BACK -->
+        <div class="flip-card-back">
+          <p class="back-title"><%= sub.name %></p>
+
+          <div class="back-row">
+            <span class="back-label">Rating</span>
+            <span class="back-rating"><%= sub.rate %> / 10</span>
+          </div>
+
+          <div class="back-row">
+            <span class="back-label">Price</span>
+            <span class="back-price">$<%= Number(sub.price).toLocaleString() %></span>
+          </div>
+
+          <div class="back-row">
+            <span class="back-label">Stats</span>
+            <span class="back-stat"><%= sub.stat %></span>
+          </div>
+
+          <div class="back-row">
+            <span class="back-label">History</span>
+            <p class="back-history"><%= sub.history %></p>
+          </div>
+
+          <div class="back-owner">
+            👤 User ID: <%= sub.user_id || 'N/A' %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <% } %>
+  </div>
+
+  <p id="empty-state">No cards found in this category.</p>
+
+
+
+  <%- include('partials/footer') %>
+
+</body>
+</html>

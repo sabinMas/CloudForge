@@ -140,6 +140,18 @@ app.post('/upload', upload.single('imgUpload'), async (req, res) => {
     });
 });
 
+// Cards browse page — supports ?category= filter from home page
+app.get('/cards', async (req, res) => {
+    try {
+        const category = req.query.category || 'all';
+        const [submissions] = await pool.query('SELECT * FROM cards ORDER BY timestamp DESC');
+        res.render('cards', { user, submissions, activeCategory: category });
+    } catch (err) {
+        console.error('Database error:', err);
+        res.status(500).send('Error loading cards: ' + err.message);
+    }
+});
+
 // Upload page route
 app.get('/upload', (req, res) => {
     res.render('upload', { user });
