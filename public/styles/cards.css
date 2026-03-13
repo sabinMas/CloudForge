@@ -107,15 +107,20 @@
 
     .flip-card-front img {
       width: 100%;
-      flex: 1;
+      height: 68%;
+      flex-shrink: 0;
       object-fit: cover;
       display: block;
     }
 
     .flip-card-front .card-front-footer {
+      flex: 1;
       padding: 10px 12px;
       background-color: #1f0f3a;
       border-top: 1px solid #4a2a6e;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .flip-card-front .card-front-footer .card-name {
@@ -212,7 +217,7 @@
       flex: 1;
       overflow: hidden;
       display: -webkit-box;
-      line-clamp: 4;
+      -webkit-line-clamp: 4;
       -webkit-box-orient: vertical;
     }
 
@@ -230,54 +235,4 @@
       padding: 60px 20px;
       color: #7b4fa6;
       display: none;
-    }
-
-    /* ── Users section ── */
-    #users-section {
-      max-width: 960px;
-      margin: 0 auto 60px;
-      padding: 0 32px;
-    }
-
-    #users-section h2 {
-      font-size: 1.4rem;
-      color: #c75b2a;
-      margin-bottom: 16px;
-      border-bottom: 1px solid #4a2a6e;
-      padding-bottom: 8px;
-    }
-
-    .users-table-wrapper {
-      overflow-x: auto;
-    }
-
-    #users-table {
-      width: 100%;
-      border-collapse: collapse;
-      background-color: #2c1650;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-
-    #users-table th {
-      background-color: #4a2a6e;
-      color: #fdf6ee;
-      padding: 10px 14px;
-      text-align: left;
-      font-size: 0.85rem;
-    }
-
-    #users-table td {
-      padding: 8px 14px;
-      border-bottom: 1px solid #3a1e60;
-      color: #fdf6ee;
-      font-size: 0.85rem;
-    }
-
-    #users-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    #users-table tr:hover td {
-      background-color: #3a1e60;
     }
