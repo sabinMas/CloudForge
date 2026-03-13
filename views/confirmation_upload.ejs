@@ -21,6 +21,13 @@
 
 <table>
 
+<% if (image) { %>
+<tr>
+  <td>Image:</td>
+  <td><img src="/uploads/<%= image %>" alt="<%= formData.name %>" style="max-width:200px; border-radius:8px;"></td>
+</tr>
+<% } %>
+
 <tr>
 <td>Title:</td>
 <td><%= formData.name %></td>
@@ -58,6 +65,6 @@
 <a href="/upload">Upload Another Card</a>
 
 </div>
-      <%- include('partials/footer') %>
+<%- include('partials/footer') %>
 </body>
 </html>

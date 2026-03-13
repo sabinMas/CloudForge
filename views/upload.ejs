@@ -17,7 +17,7 @@
   </div>
   <main>
     <div id="imgBlock">
-      <input type="file" id="imgUpload" accept="image/*">
+      <input type="file" id="imgUpload" name="imgUpload" accept="image/*">
       <label for="imgUpload" id="imgLabel">
         <span id="imgIcon">🖼️</span>
         <span>Upload a Card</span>
@@ -32,12 +32,11 @@
 
     <div id="upload-form-wrapper">
       <div class="form-container">
-        <form id="upload-form" action="/upload" method="post">
+        <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
           <fieldset>
             <label>
               <span class="inputTitle">Title:</span>
               <div class="inputContanier">
-
                 <input id="name" name="name" type="text">
                 <span class="err" id="ename">Please insert a Name!</span>
               </div>
@@ -47,8 +46,15 @@
               <div class="inputContanier">
                 <select id="category" name="category">
                   <option value="none">Pick a category</option>
-                  <option value="gaming">Gaming</option>
-                  <option value="trading">Trading</option>
+                  <option value="pokemon">Pokemon</option>
+                  <option value="magic-the-gathering">Magic The Gathering</option>
+                  <option value="yu-gi-oh">Yu-Gi-Oh</option>
+                  <option value="basketball">Basketball</option>
+                  <option value="football">Football</option>
+                  <option value="baseball">Baseball</option>
+                  <option value="soccer">Soccer</option>
+                  <option value="hockey">Hockey</option>
+                  <option value="other">Other</option>
                 </select>
                 <span class="err" id="ecate">Please insert a Category!</span>
               </div>
@@ -56,7 +62,6 @@
 
             <label>
               <span class="inputTitle">Rating:</span>
-
               <div class="inputContanier">
                 <select id="rate" name="rate">
                   <option value="" disabled selected>Select a rating</option>
@@ -73,35 +78,30 @@
                 </select>
                 <span class="err" id="erate">Please insert a Rating!</span>
               </div>
-
             </label>
+
             <label>
               <span class="inputTitle">Stats:</span>
               <div class="inputContanier">
-
                 <input id="stat" name="stat" type="text">
                 <span class="err" id="estat">Please insert a Stat!</span>
               </div>
-
             </label>
+
             <label>
-
-
-              <span class="inputTitle">
-                Price:
-              </span>
+              <span class="inputTitle">Price:</span>
               <div class="inputContanier">
-
                 <input id="price" name="price" type="number">
                 <span class="err" id="eprice">Please insert a price!</span>
                 <span class="err" id="epricenegative">Please insert a postive number!</span>
               </div>
-
             </label>
+
             <label>
               <span class="inputTitle">History:</span>
               <textarea name="history"></textarea>
             </label>
+
             <button>Submit</button>
           </fieldset>
         </form>
@@ -110,9 +110,6 @@
           <a href="/profile" class="nav-btn">Go to Dashboard</a>
         </div>
       </div>
-    </div>
-
-    </div>
     </div>
   </main>
   <%- include('partials/footer') %>
