@@ -1,6 +1,8 @@
 import express from "express";
 import dotenv from 'dotenv';
 import mysql2 from 'mysql2';
+import multer from 'multer';
+import path from 'path';
 dotenv.config();
 
 const app = express();
@@ -14,93 +16,101 @@ const pool = mysql2.createPool({
     port: process.env.DB_PORT
 }).promise();
 
+// Multer storage config — saves files to /public/uploads/
+// Each file gets a unique name using the current timestamp
+const storage = multer.diskStorage({
+    destination: 'public/uploads/',
+    filename: (req, file, cb) => {
+        const ext = path.extname(file.originalname);
+        const uniqueName = Date.now() + '-' + file.originalname.replace(/\s+/g, '-');
+        cb(null, uniqueName);
+    }
+});
+
+// Only allow image file types
+const fileFilter = (req, file, cb) => {
+    const allowedTypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/svg+xml'];
+    if (allowedTypes.includes(file.mimetype)) {
+        cb(null, true);
+    } else {
+        cb(new Error('Invalid file type'), false);
+    }
+};
+
+const upload = multer({ storage, fileFilter });
+
 app.set("view engine", 'ejs');
 
 app.use(express.static('public'));
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Main route renders the home page
-
-app.get('/', (req, res) => {
-    res.render('home', { user });
+app.get('/', async (req, res) => {
+    try {
+        const [cards] = await pool.query('SELECT * FROM cards ORDER BY RAND() LIMIT 10');
+        res.render('home', { user, cards });
+    } catch (err) {
+        console.error(err);
+        res.render('home', { user, cards: [] });
+    }
 });
 
-// Sign-up page route renders the signup form for new users
-
+// Sign-up page route
 app.get('/signup', (req, res) => {
     res.render('signup', { user });
 });
 
-// Profile page route renders the user profile page
-
+// Profile page route
 app.get('/profile', (req, res) => {
     res.render('profile', { user });
 });
 
-// Sign-in page route renders the login form
-
-app.get('/signin', (req,res)=>{
-    res.render('signin', { user, error:false })
-})
+// Sign-in page route
+app.get('/signin', (req, res) => {
+    res.render('signin', { user, error: false });
+});
 
 // Sign-in submission route
-// Checks user credentials against the database; redirects to home if successful, shows error if failed
-
-app.post('/signinsubmit',async(req,res)=>{
-    try{
-        //Used this site as a refrence to write this query properly. https://blogs.oracle.com/mysql/parameterizing-mysql-queries-in-node"
+app.post('/signinsubmit', async (req, res) => {
+    try {
         const [users] = await pool.query(
             "SELECT * FROM users WHERE email = ? LIMIT 1",
             [req.body.email]
         );
-        console.log(users[0].password)
-        if(users[0].password===req.body.password){
-            res.redirect('/')
+        if (users[0].password === req.body.password) {
+            res.redirect('/');
+        } else {
+            res.render('signin', { user, error: true });
         }
-        else {
-            res.render('signin', {user, error: true})
-        }
+    } catch (err) {
+        res.status(500).send('Error loading orders' + err.message);
     }
-    catch(err){
-        res.status(500).send('Error loading orders' + err.message)
-    }
-})
+});
 
 // Admin page route
-// Fetches all card submissions and all users from the database
-//Renders the admin page with two tables: cards and users
-
-app.get('/admin', async(req, res) => {
-
+app.get('/admin', async (req, res) => {
     try {
         const [submissions] = await pool.query('SELECT * FROM cards ORDER BY timestamp DESC');
         const [users] = await pool.query('SELECT id, fname, lname, email FROM users ORDER BY id');
-        res.render('admin', { user,submissions,users });
+        res.render('admin', { user, submissions, users });
     } catch (err) {
         console.error('Database error:', err);
-        res.status(500).send('Error loading orders' + err.message)
+        res.status(500).send('Error loading orders' + err.message);
     }
 });
 
 // Sign-up form submission route
-// Saves a new user to the database
-
-app.post('/signup', async(req, res) => {
-
-    const params=[
+app.post('/signup', async (req, res) => {
+    const params = [
         req.body.fname,
         req.body.lname,
         req.body.email,
         req.body.password
-    ]
-    const sql = `INSERT INTO users(fname,lname, email,password)
-                  values (?,?,?,?);`;
-
+    ];
+    const sql = `INSERT INTO users(fname, lname, email, password) VALUES (?, ?, ?, ?)`;
     const result = await pool.execute(sql, params);
-    const [count]= await pool.query(`Select COUNT(*) As count FROM users`)
-
-
+    const [count] = await pool.query(`SELECT COUNT(*) AS count FROM users`);
     res.render('confirmation_userform', {
         user,
         formData: req.body,
@@ -109,44 +119,33 @@ app.post('/signup', async(req, res) => {
 });
 
 // Upload form submission route
-// Saves a new card to the database
-
-app.post('/upload', async(req, res) => {
-
+// upload.single('imgUpload') matches the name="imgUpload" on the file input in upload.ejs
+app.post('/upload', upload.single('imgUpload'), async (req, res) => {
     const { name, category, rate, stat, price, history } = req.body;
 
+    // If a file was uploaded use its filename, otherwise store null
+    const image = req.file ? req.file.filename : null;
 
-    const params = [
-        name,
-        category,
-        rate,
-        stat,
-        price,
-        history,
-    ];
-    const sql = `INSERT INTO cards(name,category,rate,stat,price,history)
-                  values (?,?,?,?,?,?);`;
+    const params = [name, category, rate, stat, price, history, image];
+    const sql = `INSERT INTO cards(name, category, rate, stat, price, history, image) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
     const result = await pool.execute(sql, params);
-    const [count] = await pool.query(`Select COUNT(*) As count FROM cards`)
-    console.log(result)
+    const [count] = await pool.query(`SELECT COUNT(*) AS count FROM cards`);
+
     res.render('confirmation_upload', {
         user,
         formData: req.body,
-        submissionCount: count[0].count
+        submissionCount: count[0].count,
+        image
     });
-
 });
 
 // Upload page route
-// Renders the upload form page
-
 app.get('/upload', (req, res) => {
     res.render('upload', { user });
 });
 
 // Start server
-
 app.listen(PORT, () => {
     console.log(`Listening on http://localhost:${PORT}`);
 });
