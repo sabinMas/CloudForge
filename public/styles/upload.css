@@ -183,3 +183,11 @@ textarea {
 .nav-btn:hover {
   background-color: #c75b2a; /*  orange hover */
 }
+.err_div{
+  text-align: center;
+  background-color: #c75b2a;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 25px;
+}

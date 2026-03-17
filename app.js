@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import mysql2 from 'mysql2';
 import multer from 'multer';
 import path from 'path';
-import { validate_upload } from "./validate.js";
+import { validate_upload, validate_signup } from "./validate.js";
 dotenv.config();
 
 
@@ -60,7 +60,7 @@ app.get('/', async (req, res) => {
 
 // Sign-up page route
 app.get('/signup', (req, res) => {
-    res.render('signup', { user });
+    res.render('signup', { user, errors:null });
 });
 
 // Profile page route
@@ -110,6 +110,11 @@ app.post('/signup', async (req, res) => {
         req.body.email,
         req.body.password
     ];
+    const valid=validate_signup(req.body)
+    if(!valid.isValid){
+        res.render('signup',{errors:valid.errors})
+        return;
+    }
     const sql = `INSERT INTO users(fname, lname, email, password) VALUES (?, ?, ?, ?)`;
     const result = await pool.execute(sql, params);
     const [count] = await pool.query(`SELECT COUNT(*) AS count FROM users`);

@@ -35,3 +35,26 @@ export function validate_upload(data){
         errors
     }
 }
+
+export function validate_signup(data){
+    const errors = [];
+    if(data.fname==''){
+        errors.push("First name required")
+    }
+    if(data.lname==''){
+        errors.push("Last name required")
+    }
+    if(data.email==''){
+        errors.push("Email required")
+    }
+    if(data.password==''){
+        errors.push("password is required")
+    }
+    if(data.password!=''&&data.password===data.confirm.password){
+        errors.push("Password must match!")
+    }
+    return {
+        isValid: errors.length === 0,
+        errors
+    }
+}

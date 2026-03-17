@@ -18,6 +18,13 @@
     <!-- Sign Up Form Container -->
     <div class="form-container">
         <h2>Create Account</h2>
+          <% if (errors){ %>
+          <div class="err_div">
+            <% errors.forEach(error =>{ %>
+            <p><%=error%></p>
+            <% }) %>
+          </div>
+          <%}%>
       <form id="app-form" action="/signup" method="post">
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="fname" >
