@@ -3,7 +3,9 @@ import dotenv from 'dotenv';
 import mysql2 from 'mysql2';
 import multer from 'multer';
 import path from 'path';
+import { validate_upload, validate_signup } from "./validate.js";
 dotenv.config();
+
 
 const app = express();
 const PORT = 3003;
@@ -58,7 +60,7 @@ app.get('/', async (req, res) => {
 
 // Sign-up page route
 app.get('/signup', (req, res) => {
-    res.render('signup', { user });
+    res.render('signup', { user, errors:null });
 });
 
 // Profile page route
@@ -74,6 +76,11 @@ app.get('/signin', (req, res) => {
 // Sign-in submission route
 app.post('/signinsubmit', async (req, res) => {
     try {
+        if(req.body.email==''||req.body.passord==''){
+            
+            res.render('signin',{error:true})
+            return;
+        }
         const [users] = await pool.query(
             "SELECT * FROM users WHERE email = ? LIMIT 1",
             [req.body.email]
@@ -108,6 +115,11 @@ app.post('/signup', async (req, res) => {
         req.body.email,
         req.body.password
     ];
+    const valid=validate_signup(req.body)
+    if(!valid.isValid){
+        res.render('signup',{errors:valid.errors})
+        return;
+    }
     const sql = `INSERT INTO users(fname, lname, email, password) VALUES (?, ?, ?, ?)`;
     const result = await pool.execute(sql, params);
     const [count] = await pool.query(`SELECT COUNT(*) AS count FROM users`);
@@ -122,7 +134,12 @@ app.post('/signup', async (req, res) => {
 // upload.single('imgUpload') matches the name="imgUpload" on the file input in upload.ejs
 app.post('/upload', upload.single('imgUpload'), async (req, res) => {
     const { name, category, rate, stat, price, history } = req.body;
-
+    //validates upload page
+    const valid = validate_upload(req.body)
+    if (!valid.isValid) {
+        res.render('upload', { errors: valid.errors })
+        return;
+    }
     // If a file was uploaded use its filename, otherwise store null
     const image = req.file ? req.file.filename : null;
 
@@ -154,7 +171,7 @@ app.get('/cards', async (req, res) => {
 
 // Upload page route
 app.get('/upload', (req, res) => {
-    res.render('upload', { user });
+    res.render('upload', { user, errors: null });
 });
 
 // Start server

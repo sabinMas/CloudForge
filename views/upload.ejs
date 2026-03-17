@@ -11,10 +11,17 @@
 </head>
 
 <body>
-  <%- include('partials/navbar',{user: user}) %>
+      <%- include('partials/navbar',{user: user}) %>
   <div id="topBar">
     <h1>Upload</h1>
   </div>
+  <% if (errors){ %>
+    <div class="err_div">
+  <% errors.forEach(error =>{ %>
+  <p><%=error%></p>
+  <% }) %>
+  </div>
+  <%}%>
   <main>
     <div id="imgBlock">
       <input type="file" id="imgUpload" name="imgUpload" accept="image/*">
