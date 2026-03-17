@@ -76,6 +76,11 @@ app.get('/signin', (req, res) => {
 // Sign-in submission route
 app.post('/signinsubmit', async (req, res) => {
     try {
+        if(req.body.email==''||req.body.passord==''){
+            
+            res.render('signin',{error:true})
+            return;
+        }
         const [users] = await pool.query(
             "SELECT * FROM users WHERE email = ? LIMIT 1",
             [req.body.email]
