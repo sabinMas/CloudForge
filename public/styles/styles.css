@@ -20,16 +20,6 @@ a {
   text-decoration: none;
 }
 
-/* Color Reference (no variables — plain values used throughout)
-   Deep purple background:  #1a0d2b
-   Mid purple (cards/forms): #2c1650
-   Light purple (borders):  #4a2a6e
-   Burnt orange (accent):   #c75b2a
-   Light orange (hover):    #e07840
-   Cream text:              #fdf6ee
-   Error red:               #ff4136
-*/
-
 /* Form Container */
 .form-container {
   max-width: 400px;
