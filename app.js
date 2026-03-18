@@ -63,7 +63,10 @@ app.get('/', async (req, res) => {
         res.render('home', { user: req.session.user, cards: [] });
     }
 });
-
+app.get('/signout', (req,res)=>{
+    req.session.destroy();
+    res.redirect('/')
+})
 // Sign-up page route
 app.get('/signup', (req, res) => {
     res.render('signup', { user: req.session.user, errors:null });

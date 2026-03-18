@@ -29,10 +29,10 @@
         <h2 id="profile-name">
          
         
-          <% if(user.fname!==''){ %>
+          <% if(user){ %>
            <p> <%=user.fname %></p>
           <%}%>
-         <% if(user.fname===''){ %>
+         <% if(!user){ %>
           Guest User
           <%}%>
         </h2>
@@ -40,7 +40,7 @@
       <div id="profile-actions">
         <a href="/upload" class="profile-btn">+ Upload Card</a>
         <!-- Sell button wired up later when sell route is ready -->
-        <a href="#" class="profile-btn profile-btn-secondary">Sell Card</a>
+        <a href="/signout" class="profile-btn profile-btn-secondary">Sign Out</a>
       </div>
     </div>
   </section>
