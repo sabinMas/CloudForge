@@ -11,17 +11,26 @@
 </head>
 
 <body>
-      <%- include('partials/navbar',{user: user}) %>
+  <%- include('partials/navbar',{user: user}) %>
+
   <div id="topBar">
-    <h1>Upload</h1>
+    <h1>Upload a Card</h1>
+    <!--  Show who this upload will be credited to  -->
+    <% if (user) { %>
+      <p style="margin:4px 0 0; font-size:0.85rem; color:#c4a8e0;">
+        Uploading as <strong style="color:#e07840;"><%= user.fname %> <%= user.lname %></strong>
+      </p>
+    <% } %>
   </div>
-  <% if (errors){ %>
+
+  <% if (errors) { %>
     <div class="err_div">
-  <% errors.forEach(error =>{ %>
-  <p><%=error%></p>
-  <% }) %>
-  </div>
-  <%}%>
+      <% errors.forEach(error => { %>
+        <p><%= error %></p>
+      <% }) %>
+    </div>
+  <% } %>
+
   <main>
     <div id="imgBlock">
       <input type="file" id="imgUpload" name="imgUpload" accept="image/*">
@@ -31,7 +40,6 @@
         <span id="imgSubtext">Click anywhere to browse</span>
       </label>
       <img id="imgPreview" src="" alt="Card preview">
-
       <span id="eimg" class="err" style="display:none; color:red;">
         Please upload a valid image (PNG, JPG, WEBP, or SVG).
       </span>
@@ -48,6 +56,7 @@
                 <span class="err" id="ename">Please insert a Name!</span>
               </div>
             </label>
+
             <label>
               <span class="inputTitle">Category:</span>
               <div class="inputContanier">
@@ -100,18 +109,19 @@
               <div class="inputContanier">
                 <input id="price" name="price" type="number">
                 <span class="err" id="eprice">Please insert a price!</span>
-                <span class="err" id="epricenegative">Please insert a postive number!</span>
+                <span class="err" id="epricenegative">Please insert a positive number!</span>
               </div>
             </label>
 
             <label>
               <span class="inputTitle">History:</span>
-              <textarea name="history"></textarea>
+              <textarea name="history" id="history"></textarea>
             </label>
 
             <button>Submit</button>
           </fieldset>
         </form>
+
         <div class="nav-buttons">
           <a href="/" class="nav-btn">Go Home</a>
           <a href="/profile" class="nav-btn">Go to Dashboard</a>
@@ -119,6 +129,7 @@
       </div>
     </div>
   </main>
+
   <%- include('partials/footer') %>
 </body>
 
