@@ -9,10 +9,10 @@ export function validate_upload(data){
         "yu-gi-oh",
         "basketball",
         "football",
-        "basebal",
+        "baseball",
         "soccer",
     ]
-    if(!data.category.includes(category_options)){
+    if(!category_options.includes(data.category)){
         errors.push('Insert Valid Category')
     }
     if(data.rate<1 &&data.rate>10){
