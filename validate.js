@@ -50,7 +50,7 @@ export function validate_signup(data){
     if(data.password==''){
         errors.push("password is required")
     }
-    if(data.password!=''&&data.password===data.confirm.password){
+    if(data.password!=''&&data.password!==data['confirm-password']){
         errors.push("Password must match!")
     }
     return {
