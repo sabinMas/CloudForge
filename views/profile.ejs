@@ -27,8 +27,14 @@
       </div>
       <div id="profile-info">
         <h2 id="profile-name">
-          <!-- TODO: replace with session user name once auth is in place -->
-          <%= user.name ? user.name : "Guest User" %>
+         
+        
+          <% if(user.fname!==''){ %>
+           <p> <%=user.fname %></p>
+          <%}%>
+         <% if(user.fname===''){ %>
+          Guest User
+          <%}%>
         </h2>
       </div>
       <div id="profile-actions">

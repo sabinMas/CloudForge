@@ -8,11 +8,10 @@
         <a class="navlink"  href="/" id="home">Home</a>
         <a class="navlink"  href="/upload" id='upload'>Upload</a>
         <a class="navlink" href="/cards" id="cards">All Cards</a>
-        <a class="navlink"  href="/profile" id="profile">Profile</a>
-        <% if(user.name!==" "||user.name){ %>
-        <a class="navlink" id="user"><%=user.name%></a>
+        <% if(user){ %>
+            <a class="navlink"  href="/profile" id="profile">Profile</a>
         <%}%>
-        <% if(user.name==""||!user.name){%>
+        <% if(!user) {%>
             <a class="navlink" href="/signin" id="signup">Sign In!</a>
             <%}%>
     </div>
