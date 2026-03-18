@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/styles/styles.css">
   <link rel="stylesheet" href="/styles/upload.css">
+  <!-- upload-verify.js handles client-side validation and image preview -->
   <script src="/js/upload-verify.js" defer></script>
   <title>Upload</title>
 </head>
@@ -13,9 +14,10 @@
 <body>
   <%- include('partials/navbar',{user: user}) %>
 
+  <!-- Sticky top bar — shows page title and the logged-in user's name -->
   <div id="topBar">
     <h1>Upload a Card</h1>
-    <!--  Show who this upload will be credited to  -->
+    <!-- Only render the "uploading as" line when a session user exists -->
     <% if (user) { %>
       <p style="margin:4px 0 0; font-size:0.85rem; color:#c4a8e0;">
         Uploading as <strong style="color:#e07840;"><%= user.fname %> <%= user.lname %></strong>
@@ -23,6 +25,7 @@
     <% } %>
   </div>
 
+  <!-- Server-side validation errors passed from app.js via validate_upload() -->
   <% if (errors) { %>
     <div class="err_div">
       <% errors.forEach(error => { %>
@@ -32,14 +35,21 @@
   <% } %>
 
   <main>
-    <div id="imgBlock">
-      <input type="file" id="imgUpload" name="imgUpload" accept="image/*">
-      <label for="imgUpload" id="imgLabel">
+    <!--
+      Image preview block — clicking anywhere inside triggers the hidden file input.
+      NOTE: The actual <input type="file"> lives inside the <form> below so that
+      multipart/form-data includes the file when the form is submitted. Multer on
+      the server reads req.file only when the input is part of the submitted form.
+    -->
+    <div id="imgBlock" onclick="document.getElementById('imgUpload').click()">
+      <label id="imgLabel">
         <span id="imgIcon">🖼️</span>
         <span>Upload a Card</span>
         <span id="imgSubtext">Click anywhere to browse</span>
       </label>
+      <!-- Preview shown by upload-verify.js after a valid file is selected -->
       <img id="imgPreview" src="" alt="Card preview">
+      <!-- Client-side error shown when the selected file is not an allowed image type -->
       <span id="eimg" class="err" style="display:none; color:red;">
         Please upload a valid image (PNG, JPG, WEBP, or SVG).
       </span>
@@ -47,8 +57,15 @@
 
     <div id="upload-form-wrapper">
       <div class="form-container">
+        <!--
+          Multer is how we store our images to mason's VM or whichever VM we choose.
+          enctype="multipart/form-data" is required for multer to parse the file upload.
+          action="/upload" maps to the POST /upload route in app.js.
+        -->
         <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
           <fieldset>
+
+            <!-- Card title — required, validated client-side and server-side -->
             <label>
               <span class="inputTitle">Title:</span>
               <div class="inputContanier">
@@ -57,6 +74,7 @@
               </div>
             </label>
 
+            <!-- Card category — must match one of the accepted values in validate.js -->
             <label>
               <span class="inputTitle">Category:</span>
               <div class="inputContanier">
@@ -76,6 +94,7 @@
               </div>
             </label>
 
+            <!-- Card condition rating on a 1–10 PSA-style scale -->
             <label>
               <span class="inputTitle">Rating:</span>
               <div class="inputContanier">
@@ -96,6 +115,7 @@
               </div>
             </label>
 
+            <!-- Free-text stats field (e.g. HP, attack, set number) -->
             <label>
               <span class="inputTitle">Stats:</span>
               <div class="inputContanier">
@@ -104,6 +124,7 @@
               </div>
             </label>
 
+            <!-- Listing price — stored as a number; negative values are blocked client-side -->
             <label>
               <span class="inputTitle">Price:</span>
               <div class="inputContanier">
@@ -113,15 +134,31 @@
               </div>
             </label>
 
+            <!-- Card provenance / background story -->
             <label>
               <span class="inputTitle">History:</span>
               <textarea name="history" id="history"></textarea>
             </label>
 
-            <button>Submit</button>
+            <!--
+              File input MUST be inside the form so the browser includes it in the
+              multipart POST body. Multer's upload.single('imgUpload') in app.js
+              matches this name attribute to populate req.file.
+              It is visually hidden; clicking #imgBlock triggers it via onclick above.
+            -->
+            <input
+              type="file"
+              id="imgUpload"
+              name="imgUpload"
+              accept="image/*"
+              style="display:none;"
+            >
+
+            <button type="submit">Submit</button>
           </fieldset>
         </form>
 
+        <!-- Secondary navigation links shown below the form -->
         <div class="nav-buttons">
           <a href="/" class="nav-btn">Go Home</a>
           <a href="/profile" class="nav-btn">Go to Dashboard</a>
