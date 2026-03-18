@@ -1,7 +1,8 @@
 <!--
     Author: Mason
     Description: User dashboard page — shows profile hero bar and uploaded cards grid.
-    Will pull from database once connected; uses placeholder data for now.
+    This should now be at the point where there is no hardcoded placeholder cards,
+    they should be queried directly from the database.
 -->
 
 <!DOCTYPE html>
@@ -14,7 +15,7 @@
   <link rel="stylesheet" href="/styles/profile.css">
   <title>Dashboard</title>
 </head>
-<main>
+
 <body>
   <%- include('partials/navbar', {user: user}) %>
 
@@ -22,24 +23,19 @@
   <section id="profile-hero">
     <div id="profile-hero-inner">
       <div id="profile-avatar">
-        <!-- Placeholder avatar icon, swap for real image when auth is set up -->
         <span id="avatar-icon">👤</span>
       </div>
       <div id="profile-info">
         <h2 id="profile-name">
-         
-        
-          <% if(user){ %>
-           <p> <%=user.fname %></p>
-          <%}%>
-         <% if(!user){ %>
-          Guest User
-          <%}%>
+          <% if (user) { %>
+            <%= user.fname %> <%= user.lname %>
+          <% } else { %>
+            Guest User
+          <% } %>
         </h2>
       </div>
       <div id="profile-actions">
         <a href="/upload" class="profile-btn">+ Upload Card</a>
-        <!-- Sell button wired up later when sell route is ready -->
         <a href="/signout" class="profile-btn profile-btn-secondary">Sign Out</a>
       </div>
     </div>
@@ -47,74 +43,38 @@
 
   <!-- My Cards Section -->
   <section id="my-cards-section">
-    <h3 id="my-cards-title">My Cards</h3>
+    <h3 id="my-cards-title">
+      My Cards (<%= userCards.length %>)
+    </h3>
 
-    <div id="profile-card-grid">
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 9 - Mint</span>
-        </div>
+    <% if (userCards.length === 0) { %>
+      <p style="color: var(--text-muted); text-align: center; padding: 40px 0;">
+        You haven't uploaded any cards yet.
+        <a href="/upload">Upload your first card!</a>
+      </p>
+    <% } else { %>
+      <div id="profile-card-grid">
+        <% for (let card of userCards) { %>
+          <div class="profile-card">
+            <div class="profile-card-img-wrapper">
+              <% if (card.image) { %>
+                <img src="/uploads/<%= card.image %>" alt="<%= card.name %>">
+              <% } else { %>
+                <img src="/graphics/460x640.svg" alt="Card placeholder">
+              <% } %>
+            </div>
+            <div class="profile-card-info">
+              <span class="profile-card-title"><%= card.name %></span>
+              <span class="profile-card-rating">Rating: <%= card.rate %> · $<%= Number(card.price).toLocaleString() %></span>
+              <span style="font-size:0.78rem; color: var(--text-muted); text-transform: capitalize;"><%= card.category %></span>
+            </div>
+          </div>
+        <% } %>
       </div>
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 7 - Near Mint</span>
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 10 - Gem Mint</span>
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 8 - Near Mint/Mint</span>
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 6 - Excellent/Mint</span>
-        </div>
-      </div>
-
-      <div class="profile-card">
-        <div class="profile-card-img-wrapper">
-          <img src="/graphics/460x640.svg" alt="Card placeholder">
-        </div>
-        <div class="profile-card-info">
-          <span class="profile-card-title">Card Title</span>
-          <span class="profile-card-rating">Rating: 5 - Excellent</span>
-        </div>
-      </div>
-
-    </div>
+    <% } %>
   </section>
+
+  <%- include('partials/footer') %>
 </body>
 
-</main>
-<%- include('partials/footer') %>
 </html>
